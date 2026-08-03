@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Preview Website",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"start",
+				"",
+				"${workspaceFolder}\\index.html"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Serve Website (Localhost)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}\\scripts\\start-localhost-server.ps1",
+				"-Port",
+				"5500",
+				"-OpenBrowser"
+			],
+			"isBackground": true,
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"group": "build"
+		}
+	]
+}

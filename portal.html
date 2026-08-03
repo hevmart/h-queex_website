@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H-Queex | Client Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/images/favicon-h-queex.png" />
+    <link rel="stylesheet" href="portal.css" />
+  </head>
+  <body>
+    <div class="portal-bg" aria-hidden="true">
+      <span class="portal-beam portal-beam-a"></span>
+      <span class="portal-beam portal-beam-b"></span>
+    </div>
+
+    <header class="portal-header">
+      <a class="portal-brand" href="index.html" aria-label="Return to H-Queex website">
+        <img src="assets/images/h-queex-logo-blue-gold-tagline-v4.png" alt="H-Queex logo" />
+      </a>
+      <div class="portal-header-actions">
+        <a href="index.html">Website</a>
+        <button id="logout-btn" class="ghost-btn" type="button">Sign Out</button>
+      </div>
+    </header>
+
+    <main class="portal-main">
+      <section id="login-shell" class="auth-shell">
+        <div class="auth-card">
+          <p class="eyebrow">Client Portal Access</p>
+          <h1>Secure project workspace</h1>
+          <p>
+            Access project files, deliverables, status updates, and asynchronous messaging.
+            Billing is managed outside the portal through invoice channels.
+          </p>
+
+          <form id="login-form" class="auth-form">
+            <label>
+              Display Name
+              <input type="text" name="displayName" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Access Role
+              <select name="role" required>
+                <option value="client" selected>Client</option>
+                <option value="operator">H-Queex Operator</option>
+              </select>
+            </label>
+            <label>
+              Client Workspace
+              <input
+                type="text"
+                name="workspaceName"
+                placeholder="Example: Client Workspace"
+                required
+              />
+            </label>
+            <label>
+              Passphrase
+              <input type="password" name="passphrase" required />
+            </label>
+            <button class="solid-btn" type="submit">Enter Portal</button>
+            <p class="note" id="login-note" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="app-shell" class="app-shell hidden">
+        <aside class="portal-sidebar">
+          <div class="sidebar-block">
+            <p class="eyebrow">Session</p>
+            <h2 id="session-name">Client User</h2>
+            <p id="session-role">Role: Client</p>
+            <p id="workspace-label">Workspace: Not selected</p>
+          </div>
+
+          <div class="sidebar-block" id="workspace-switch-block">
+            <p class="eyebrow">Workspace Control</p>
+            <label class="inline-label" for="client-switch">Active workspace</label>
+            <select id="client-switch"></select>
+            <div class="workspace-logo-tools">
+              <label class="inline-label" for="workspace-logo-update-input">Active workspace logo</label>
+              <input
+                id="workspace-logo-update-input"
+                type="text"
+                placeholder="https://example.com/client-logo.png or assets/images/client-logo.png"
+              />
+              <button id="update-logo-btn" class="ghost-btn" type="button">Update Logo</button>
+              <p class="note" id="logo-update-note" aria-live="polite"></p>
+            </div>
+            <form id="workspace-form" class="stack-form compact-form">
+              <label>
+                Add workspace
+                <input
+                  id="workspace-name-input"
+                  type="text"
+                  placeholder="New client workspace"
+                />
+              </label>
+              <label>
+                Client logo URL (optional)
+                <input
+                  id="workspace-logo-input"
+                  type="text"
+                  placeholder="https://example.com/client-logo.png or assets/images/client-logo.png"
+                />
+              </label>
+              <label>
+                Initial status
+                <select id="workspace-status-input">
+                  <option value="active" selected>Active</option>
+                  <option value="completed">Completed</option>
+                  <option value="archived">Archived</option>
+                </select>
+              </label>
+              <button class="solid-btn" type="submit">Create Workspace</button>
+              <p class="note" id="workspace-note" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <nav class="portal-nav" aria-label="Portal navigation">
+            <button class="tab-btn active" data-tab="overview" type="button">Overview</button>
+            <button class="tab-btn" data-tab="files" type="button">Files</button>
+            <button class="tab-btn" data-tab="deliverables" type="button">Deliverables</button>
+            <button class="tab-btn" data-tab="messages" type="button">Messages</button>
+            <button class="tab-btn" data-tab="governance" type="button">Governance</button>
+          </nav>
+
+          <div class="sidebar-block">
+            <p class="eyebrow">Billing Status</p>
+            <p>Invoice handling remains external to the portal.</p>
+            <p class="pill">Status: External Invoice Workflow</p>
+          </div>
+        </aside>
+
+        <div class="portal-content">
+          <section class="panel active" id="panel-overview">
+            <div class="overview-head">
+              <h3 id="overview-title">Project Snapshot</h3>
+              <button id="portfolio-view-btn" class="ghost-btn hidden" type="button">
+                Back to Client Portfolio
+              </button>
+            </div>
+            <p id="workspace-focus-note" class="focus-note hidden"></p>
+            <div id="workspace-identity" class="workspace-identity hidden">
+              <div class="workspace-identity-avatar" id="workspace-identity-avatar" aria-hidden="true">
+                <img
+                  id="workspace-identity-avatar-img"
+                  class="hidden"
+                  alt="Client logo"
+                />
+                <span id="workspace-identity-avatar-text">CN</span>
+              </div>
+              <div class="workspace-identity-copy">
+                <p class="workspace-identity-label">Current Client Workspace</p>
+                <h4 id="workspace-identity-name">Client Name</h4>
+                <p id="workspace-identity-meta" class="workspace-identity-meta"></p>
+              </div>
+            </div>
+
+            <div id="operator-overview" class="operator-overview hidden">
+              <div class="operator-controls">
+                <label>
+                  Search clients
+                  <input
+                    id="client-search"
+                    type="text"
+                    placeholder="Search by client name"
+                  />
+                </label>
+                <label>
+                  Status filter
+                  <select id="status-filter">
+                    <option value="all" selected>All</option>
+                    <option value="active">Active</option>
+                    <option value="completed">Completed</option>
+                    <option value="archived">Archived</option>
+                  </select>
+                </label>
+                <label>
+                  Trend window
+                  <select id="kpi-window">
+                    <option value="7" selected>Last 7 days</option>
+                    <option value="30">Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="operator-kpis">
+                <article>
+                  <p class="label">Active</p>
+                  <h5 id="kpi-active-count">0</h5>
+                  <p class="kpi-trend" id="kpi-active-trend">+0 last 7 days</p>
+                </article>
+                <article>
+                  <p class="label">Completed</p>
+                  <h5 id="kpi-completed-count">0</h5>
+                  <p class="kpi-trend" id="kpi-completed-trend">+0 last 7 days</p>
+                </article>
+                <article>
+                  <p class="label">Archived</p>
+                  <h5 id="kpi-archived-count">0</h5>
+                  <p class="kpi-trend" id="kpi-archived-trend">+0 last 7 days</p>
+                </article>
+              </div>
+
+              <div id="active-group" class="client-group">
+                <h4>Active Clients</h4>
+                <div id="client-cards" class="client-cards"></div>
+              </div>
+
+              <div id="completed-group" class="client-group">
+                <h4>Completed Clients</h4>
+                <div id="completed-client-cards" class="client-cards"></div>
+              </div>
+
+              <div id="archived-group" class="client-group">
+                <h4>Archived Clients</h4>
+                <div id="archived-client-cards" class="client-cards"></div>
+              </div>
+            </div>
+
+            <div class="status-strip" id="status-strip">
+              <article><span>Intake</span><strong>Complete</strong></article>
+              <article><span>Qualification</span><strong>Complete</strong></article>
+              <article><span>Portal Setup</span><strong>Complete</strong></article>
+              <article><span>Evidence Review</span><strong>In Progress</strong></article>
+              <article><span>Report Delivery</span><strong>Pending</strong></article>
+            </div>
+
+            <div class="overview-grid">
+              <article>
+                <p class="label">Next Action</p>
+                <h4 id="next-action">Upload current-state materials</h4>
+              </article>
+              <article>
+                <p class="label">Latest Deliverable</p>
+                <h4 id="latest-deliverable">None published</h4>
+              </article>
+              <article>
+                <p class="label">Unread Messages</p>
+                <h4 id="unread-count">0</h4>
+              </article>
+            </div>
+
+            <div class="notification-card">
+              <h4>Notifications</h4>
+              <ul id="notification-list"></ul>
+            </div>
+          </section>
+
+          <section class="panel" id="panel-files">
+            <div class="panel-head">
+              <h3>Evidence Uploads</h3>
+              <p>Accepted formats: PDF, Word, Excel, and process recording references.</p>
+            </div>
+
+            <form id="upload-form" class="stack-form">
+              <label>
+                File Name
+                <input type="text" name="fileName" required />
+              </label>
+              <label>
+                File Type
+                <select name="fileType" required>
+                  <option value="Document">Document</option>
+                  <option value="Spreadsheet">Spreadsheet</option>
+                  <option value="Video">Video</option>
+                </select>
+              </label>
+              <label>
+                Notes
+                <input type="text" name="fileNotes" placeholder="Optional context" />
+              </label>
+              <button class="solid-btn" type="submit">Record Upload</button>
+              <p class="note" id="upload-note" aria-live="polite"></p>
+            </form>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Notes</th>
+                  <th>By</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="file-table-body"></tbody>
+            </table>
+          </section>
+
+          <section class="panel" id="panel-deliverables">
+            <div class="panel-head">
+              <h3>Deliverables and Versions</h3>
+              <p>Version history tracks report iterations and release notes.</p>
+            </div>
+
+            <form id="deliverable-form" class="stack-form">
+              <label>
+                Deliverable Title
+                <input type="text" name="deliverableTitle" required />
+              </label>
+              <label>
+                Version
+                <input type="text" name="deliverableVersion" placeholder="v1.0" required />
+              </label>
+              <label>
+                Summary
+                <input type="text" name="deliverableSummary" required />
+              </label>
+              <button class="solid-btn" type="submit">Publish Version</button>
+              <p class="note" id="deliverable-note" aria-live="polite"></p>
+            </form>
+
+            <div id="deliverable-list" class="version-list"></div>
+          </section>
+
+          <section class="panel" id="panel-messages">
+            <div class="panel-head">
+              <h3>Asynchronous Messaging</h3>
+              <p>All project communication is stored with timestamped records.</p>
+            </div>
+
+            <form id="message-form" class="stack-form">
+              <label>
+                Message
+                <textarea name="messageBody" rows="4" required></textarea>
+              </label>
+              <button class="solid-btn" type="submit">Send Message</button>
+            </form>
+
+            <ul id="message-list" class="message-list"></ul>
+          </section>
+
+          <section class="panel" id="panel-governance">
+            <div class="panel-head">
+              <h3>Governance Controls</h3>
+              <p>Role management, activity logs, and compliance records.</p>
+            </div>
+
+            <div class="governance-grid">
+              <article>
+                <h4>Project Phase</h4>
+                <select id="phase-select">
+                  <option>Intake</option>
+                  <option>Qualification</option>
+                  <option>Evidence Review</option>
+                  <option>Design</option>
+                  <option>Delivery</option>
+                  <option>Monitoring</option>
+                </select>
+              </article>
+              <article>
+                <h4>Role Permissions</h4>
+                <ul>
+                  <li>Client: upload files, send messages, view deliverables.</li>
+                  <li>Operator: all client actions plus publish versions and phase updates.</li>
+                </ul>
+              </article>
+              <article>
+                <h4>Portal Security Posture</h4>
+                <p>Session-based access, local activity trace, and structured record retention.</p>
+              </article>
+            </div>
+
+            <h4>Activity Log</h4>
+            <ul id="activity-list" class="activity-list"></ul>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="content-sync.js"></script>
+    <script src="portal.js"></script>
+  </body>
+</html>

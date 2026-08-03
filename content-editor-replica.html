@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H-Queex | Homepage Replica Editor</title>
+    <link rel="stylesheet" href="portal.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      :root {
+        --replica-toolbar-height: 78px;
+        --replica-ink: #11213f;
+        --replica-accent: #b08d57;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 12% -12%, #ffffff, transparent 40%),
+          radial-gradient(circle at 85% 8%, #edf2f9, transparent 36%), var(--bg);
+      }
+
+      .replica-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        align-items: center;
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(17, 33, 63, 0.14);
+        background: rgba(248, 250, 254, 0.94);
+        backdrop-filter: blur(10px);
+      }
+
+      .replica-toolbar-title {
+        margin: 0;
+        color: var(--replica-ink);
+        font-size: 1rem;
+      }
+
+      .replica-toolbar-subtitle {
+        margin: 0.2rem 0 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .replica-edit-hint {
+        margin: 0.28rem 0 0;
+        font-size: 0.76rem;
+        color: #6a5733;
+      }
+
+      .replica-toolbar-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.45rem;
+        max-width: 100%;
+      }
+
+      .replica-toolbar input,
+      .replica-toolbar select {
+        min-width: 150px;
+        border: 1px solid rgba(17, 33, 63, 0.2);
+        border-radius: 10px;
+        padding: 0.45rem 0.6rem;
+        font: inherit;
+        max-width: 100%;
+      }
+
+      .replica-toolbar .btn {
+        border-radius: 10px;
+        padding: 0.45rem 0.75rem;
+      }
+
+      .replica-status {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin-left: 0.2rem;
+        align-self: center;
+        flex: 1 1 260px;
+      }
+
+      .replica-portal-legend {
+        max-width: 1200px;
+        margin: 0.9rem auto 0;
+        padding: 0 1rem;
+      }
+
+      .replica-portal-legend-card {
+        border: 2px solid rgba(22, 41, 74, 0.18);
+        border-left: 8px solid #16294a;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(243, 246, 251, 0.98));
+        box-shadow: 0 20px 44px rgba(22, 41, 74, 0.12);
+        padding: 1.1rem 1.2rem;
+      }
+
+      .replica-portal-legend-card strong {
+        display: block;
+        margin-bottom: 0.55rem;
+        color: #16294a;
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .replica-portal-legend-line {
+        margin: 0.45rem 0 0;
+        color: #5e6a7d;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .replica-portal-legend-line span {
+        display: inline-block;
+        margin-right: 0.9rem;
+        margin-top: 0.1rem;
+        padding: 0.34rem 0.7rem;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      .replica-portal-client {
+        background: rgba(22, 41, 74, 0.12);
+        color: #16294a;
+        box-shadow: inset 0 0 0 1px rgba(22, 41, 74, 0.08);
+      }
+
+      .replica-portal-admin {
+        background: rgba(176, 141, 87, 0.18);
+        color: #7b5f2e;
+        box-shadow: inset 0 0 0 1px rgba(176, 141, 87, 0.12);
+      }
+
+      .replica-canvas {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem 3rem;
+      }
+
+      /* Replica mode has no live script animations, so force reveal blocks visible. */
+      .replica-canvas .reveal,
+      .replica-canvas .reveal.reveal-delay-1,
+      .replica-canvas .reveal.reveal-delay-2,
+      .replica-canvas .reveal.reveal-delay-3,
+      .replica-canvas .reveal.reveal-delay-4 {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        animation: none !important;
+      }
+
+      .replica-editable {
+        outline: 2px dashed rgba(176, 141, 87, 0.65);
+        outline-offset: 2px;
+        border-radius: 6px;
+        background: rgba(176, 141, 87, 0.12);
+        transition: background-color 140ms ease, outline-color 140ms ease, box-shadow 140ms ease;
+        cursor: text;
+        box-shadow: inset 0 -1px 0 rgba(176, 141, 87, 0.55);
+      }
+
+      /* Keep white/light text readable in dark surfaces. */
+      .replica-canvas .section-dark .replica-editable,
+      .replica-canvas .site-footer .replica-editable {
+        background: rgba(176, 141, 87, 0.14);
+        color: var(--navy) !important;
+        outline-color: rgba(230, 196, 136, 0.9);
+        box-shadow: inset 0 -1px 0 rgba(230, 196, 136, 0.85);
+      }
+
+      .replica-canvas .site-footer,
+      .replica-canvas .site-footer .footer-wrap,
+      .replica-canvas .site-footer .footer-brand,
+      .replica-canvas .site-footer .footer-brand span,
+      .replica-canvas .site-footer .footer-tagline,
+      .replica-canvas .site-footer .footer-links,
+      .replica-canvas .site-footer .footer-links a {
+        color: var(--navy);
+      }
+
+      .replica-canvas .site-footer .footer-links a:hover {
+        color: var(--gold);
+      }
+
+      /* Editable text inside button-style links needs stronger contrast. */
+      .replica-canvas a.btn.replica-editable,
+      .replica-canvas .btn .replica-editable,
+      .replica-canvas .hero-cta .replica-editable {
+        background: rgba(8, 17, 34, 0.6);
+        outline-color: rgba(230, 196, 136, 0.92);
+        box-shadow: inset 0 -1px 0 rgba(230, 196, 136, 0.9);
+      }
+
+      .replica-editable:hover {
+        background: rgba(176, 141, 87, 0.18);
+        outline-color: rgba(176, 141, 87, 0.8);
+      }
+
+      .replica-canvas .section-dark .replica-editable:hover,
+      .replica-canvas .site-footer .replica-editable:hover {
+        background: rgba(176, 141, 87, 0.2);
+      }
+
+      .replica-canvas a.btn.replica-editable:hover,
+      .replica-canvas .btn .replica-editable:hover,
+      .replica-canvas .hero-cta .replica-editable:hover {
+        background: rgba(8, 17, 34, 0.78);
+      }
+
+      .replica-editable:focus {
+        background: rgba(22, 41, 74, 0.08);
+        outline: 2px solid rgba(22, 41, 74, 0.7);
+        box-shadow: 0 0 0 3px rgba(22, 41, 74, 0.18);
+      }
+
+      .replica-canvas .solid-btn.replica-editable,
+      .replica-canvas .ghost-btn.replica-editable {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.55rem;
+        padding: 0.62rem 0.96rem;
+        border-radius: 999px;
+        border: 1px solid rgba(176, 141, 87, 0.9);
+        background: linear-gradient(135deg, #10203d 0%, #16294a 62%, #2a4c84 100%) !important;
+        color: #fff !important;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+        box-shadow: 0 10px 22px rgba(22, 41, 74, 0.16);
+      }
+
+      .replica-canvas .solid-btn.replica-editable:hover,
+      .replica-canvas .ghost-btn.replica-editable:hover,
+      .replica-canvas .solid-btn.replica-editable:focus,
+      .replica-canvas .ghost-btn.replica-editable:focus {
+        background: linear-gradient(135deg, #132742 0%, #1a3156 62%, #30558f 100%) !important;
+        color: #fff !important;
+        box-shadow: 0 12px 26px rgba(22, 41, 74, 0.2);
+      }
+
+      .replica-editable[data-empty="1"]::before {
+        content: "Type text";
+        color: rgba(94, 106, 125, 0.95);
+      }
+
+      .replica-highlight {
+        box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.4);
+      }
+
+      .replica-page-divider {
+        margin: 2rem auto 1rem;
+        max-width: 1180px;
+        padding: 0 1rem;
+      }
+
+      .replica-page-divider span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.55rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(22, 41, 74, 0.14);
+        color: #16294a;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+      }
+
+      @media (max-width: 880px) {
+        .replica-toolbar {
+          align-items: start;
+        }
+
+        .replica-toolbar-controls {
+          justify-content: flex-start;
+        }
+
+        .replica-toolbar input,
+        .replica-toolbar select {
+          min-width: 140px;
+          flex: 1 1 170px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="replica-toolbar" aria-label="Replica editor controls">
+      <div>
+        <h1 class="replica-toolbar-title">Website Replica Editor</h1>
+        <p class="replica-toolbar-subtitle">
+          Separate editor surface for the homepage and client portal. Live pages are not modified directly.
+        </p>
+        <p class="replica-edit-hint">Editable text is highlighted in gold.</p>
+      </div>
+      <div class="replica-toolbar-controls">
+        <select id="replica-section-jump" aria-label="Jump to section">
+          <option value="">Jump to section</option>
+        </select>
+        <button id="replica-save-btn" type="button" class="btn">Save</button>
+        <button id="replica-cancel-btn" type="button" class="btn ghost">Cancel Editing</button>
+        <span id="replica-status" class="replica-status" aria-live="polite">Loading replica...</span>
+      </div>
+    </header>
+
+    <main class="replica-canvas" id="replica-canvas" aria-live="polite"></main>
+
+    <script src="content-editor-replica.js"></script>
+  </body>
+</html>
