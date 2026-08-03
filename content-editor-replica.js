@@ -34,10 +34,18 @@
     { id: "portal-archived", label: "Archived Clients", selector: "#archived-group" }
   ];
 
-  function setStatus(message) {
+  function setStatus(message, kind) {
     const status = document.getElementById("replica-status");
-    if (status) {
-      status.textContent = message;
+    if (!status) {
+      return;
+    }
+
+    status.textContent = message;
+    status.classList.remove("is-success", "is-error");
+    if (kind === "success") {
+      status.classList.add("is-success");
+    } else if (kind === "error") {
+      status.classList.add("is-error");
     }
   }
 
@@ -410,7 +418,7 @@
       .then(function () {
         writeOverrides({});
         state.isDirty = false;
-        setStatus("Saved replica edits to the project content file.");
+        setStatus("Saved replica edits to the project content file.", "success");
       })
       .catch(function (error) {
         console.error(error);
@@ -421,7 +429,7 @@
           }
         });
         writeOverrides(overrides);
-        setStatus("Replica save failed. Your changes remain in local overrides.");
+        setStatus("Replica save failed. Your changes remain in local overrides.", "error");
       });
   }
 

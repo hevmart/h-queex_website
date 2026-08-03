@@ -82,6 +82,16 @@
         flex: 1 1 260px;
       }
 
+      .replica-status.is-success {
+        color: #22653d;
+        font-weight: 700;
+      }
+
+      .replica-status.is-error {
+        color: #9f2d2d;
+        font-weight: 700;
+      }
+
       .replica-portal-legend {
         max-width: 1200px;
         margin: 0.9rem auto 0;
@@ -298,6 +308,7 @@
           Separate editor surface for the homepage and client portal. Live pages are not modified directly.
         </p>
         <p class="replica-edit-hint">Editable text is highlighted in gold.</p>
+        <p class="replica-edit-hint">Saving writes the content to the project file so it is ready for GitHub Pages.</p>
       </div>
       <div class="replica-toolbar-controls">
         <select id="replica-section-jump" aria-label="Jump to section">

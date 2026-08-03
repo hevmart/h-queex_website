@@ -1218,10 +1218,18 @@
     renderSectionLayout(fieldsHost, filteredSpecs);
   }
 
-  function setStatus(message) {
+  function setStatus(message, kind) {
     const status = document.getElementById("editor-status");
-    if (status) {
-      status.textContent = message;
+    if (!status) {
+      return;
+    }
+
+    status.textContent = message;
+    status.classList.remove("is-success", "is-error");
+    if (kind === "success") {
+      status.classList.add("is-success");
+    } else if (kind === "error") {
+      status.classList.add("is-error");
     }
   }
 
@@ -1241,12 +1249,12 @@
       })
       .then(function () {
         localStorage.removeItem(STORAGE_KEY);
-        setStatus("Saved. Refresh homepage or portal tabs to see updates.");
+        setStatus("Saved to the project content file. Refresh homepage or portal tabs to see updates.", "success");
       })
       .catch(function (error) {
         console.error(error);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-        setStatus("Save failed. Your changes are still stored locally and can be retried.");
+        setStatus("Save failed. Your changes are still stored locally and can be retried.", "error");
       });
   }
 
