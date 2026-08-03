@@ -453,17 +453,31 @@
   }
 
   function publishReplicaToGitHub() {
-    setStatus("Publishing replica content to GitHub...");
+    setStatus("Saving then publishing to GitHub...");
 
-    fetch("/api/publish", {
+    const payload = Object.assign({}, state.values);
+
+    // Always save first so content-model.json is up to date before the git commit.
+    fetch("/api/save-content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({})
+      body: JSON.stringify({ values: payload })
     })
       .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Unable to publish replica content to GitHub.");
-        }
+        if (!response.ok) throw new Error("Save before publish failed.");
+        return response.json();
+      })
+      .then(function () {
+        writeOverrides({});
+        state.isDirty = false;
+        return fetch("/api/publish", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({})
+        });
+      })
+      .then(function (response) {
+        if (!response.ok) throw new Error("Unable to publish to GitHub.");
         return response.json();
       })
       .then(function (result) {
@@ -472,7 +486,7 @@
       })
       .catch(function (error) {
         console.error(error);
-        setStatus("Publish failed. Check the local Git setup and remote connection.", "error");
+        setStatus("Publish failed: " + error.message, "error");
       });
   }
 
