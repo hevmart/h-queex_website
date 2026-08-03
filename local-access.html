@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H-Queex Local Access</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #f5f7fb 0%, #eef3fa 100%);
+        color: #16294a;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+      .card {
+        width: min(720px, 100%);
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(22, 41, 74, 0.12);
+        padding: 2rem;
+      }
+      h1 { margin-top: 0; }
+      .links { display: grid; gap: 0.8rem; margin-top: 1.2rem; }
+      a {
+        display: block;
+        padding: 0.85rem 1rem;
+        border-radius: 12px;
+        background: #16294a;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a.secondary { background: #b08d57; }
+      .hint { margin-top: 0.8rem; color: #5e6a7d; }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>H-Queex local site</h1>
+      <p>Use these links to open the local pages quickly.</p>
+      <div class="links">
+        <a href="/">Open homepage</a>
+        <a class="secondary" href="/content-editor-replica.html">Open replica editor</a>
+        <a href="/portal.html">Open client portal</a>
+      </div>
+      <p class="hint">If the server is running, the local address is usually http://localhost:5500/</p>
+    </main>
+  </body>
+</html>

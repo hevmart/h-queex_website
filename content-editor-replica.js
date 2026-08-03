@@ -452,10 +452,39 @@
     setStatus("Canceled unsaved changes and restored the last saved replica state.");
   }
 
+  function publishReplicaToGitHub() {
+    setStatus("Publishing replica content to GitHub...");
+
+    fetch("/api/publish", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({})
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to publish replica content to GitHub.");
+        }
+        return response.json();
+      })
+      .then(function (result) {
+        const message = result && result.message ? result.message : "Published to GitHub.";
+        setStatus(message, result && result.published ? "success" : undefined);
+      })
+      .catch(function (error) {
+        console.error(error);
+        setStatus("Publish failed. Check the local Git setup and remote connection.", "error");
+      });
+  }
+
   function wireToolbar() {
     const saveBtn = document.getElementById("replica-save-btn");
     if (saveBtn) {
       saveBtn.addEventListener("click", saveHomeOverrides);
+    }
+
+    const publishBtn = document.getElementById("replica-publish-btn");
+    if (publishBtn) {
+      publishBtn.addEventListener("click", publishReplicaToGitHub);
     }
 
     const cancelBtn = document.getElementById("replica-cancel-btn");

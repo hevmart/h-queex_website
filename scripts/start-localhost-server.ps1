@@ -16,7 +16,7 @@ if ($listener) {
 }
 
 if ($OpenBrowser) {
-    Start-Process "http://localhost:$Port/"
+    Start-Process "http://localhost:$Port/local-access.html"
 }
 
 Set-Location $projectRoot

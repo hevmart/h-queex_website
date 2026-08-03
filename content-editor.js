@@ -1270,10 +1270,39 @@
     setStatus("Reset complete. Default content values restored.");
   }
 
+  function publishToGitHub() {
+    setStatus("Publishing to GitHub...");
+
+    fetch("/api/publish", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({})
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to publish to GitHub.");
+        }
+        return response.json();
+      })
+      .then(function (result) {
+        const message = result && result.message ? result.message : "Published to GitHub.";
+        setStatus(message, result && result.published ? "success" : undefined);
+      })
+      .catch(function (error) {
+        console.error(error);
+        setStatus("Publish failed. Check the local Git setup and remote connection.", "error");
+      });
+  }
+
   function wireActions() {
     const saveBtn = document.getElementById("save-btn");
     if (saveBtn) {
       saveBtn.addEventListener("click", saveOverrides);
+    }
+
+    const publishBtn = document.getElementById("publish-btn");
+    if (publishBtn) {
+      publishBtn.addEventListener("click", publishToGitHub);
     }
 
     const resetBtn = document.getElementById("reset-btn");
