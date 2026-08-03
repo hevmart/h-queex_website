@@ -394,17 +394,35 @@
   }
 
   function saveHomeOverrides() {
-    const overrides = readOverrides();
+    const payload = Object.assign({}, state.values);
 
-    state.pageKeys.forEach(function (key) {
-      if (typeof state.values[key] === "string") {
-        overrides[key] = state.values[key];
-      }
-    });
-
-    writeOverrides(overrides);
-    state.isDirty = false;
-    setStatus("Saved replica edits to local overrides.");
+    fetch("/api/save-content", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ values: payload })
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to save replica content to the project file.");
+        }
+        return response.json();
+      })
+      .then(function () {
+        writeOverrides({});
+        state.isDirty = false;
+        setStatus("Saved replica edits to the project content file.");
+      })
+      .catch(function (error) {
+        console.error(error);
+        const overrides = readOverrides();
+        state.pageKeys.forEach(function (key) {
+          if (typeof state.values[key] === "string") {
+            overrides[key] = state.values[key];
+          }
+        });
+        writeOverrides(overrides);
+        setStatus("Replica save failed. Your changes remain in local overrides.");
+      });
   }
 
   function cancelReplicaEdits() {

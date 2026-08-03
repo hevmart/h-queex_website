@@ -1226,8 +1226,28 @@
   }
 
   function saveOverrides() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.valuesByKey));
-    setStatus("Saved. Refresh homepage or portal tabs to see updates.");
+    const payload = Object.assign({}, state.valuesByKey);
+
+    fetch("/api/save-content", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ values: payload })
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to save content to the project file.");
+        }
+        return response.json();
+      })
+      .then(function () {
+        localStorage.removeItem(STORAGE_KEY);
+        setStatus("Saved. Refresh homepage or portal tabs to see updates.");
+      })
+      .catch(function (error) {
+        console.error(error);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        setStatus("Save failed. Your changes are still stored locally and can be retried.");
+      });
   }
 
   function resetToDefaults() {

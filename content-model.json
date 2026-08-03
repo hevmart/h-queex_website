@@ -10,7 +10,7 @@
     "homeNavPortal": "Client Portal",
     "homeNavSubmit": "Submit Intake",
     "homeHeroEyebrow": "Operating Model",
-    "homeHeroHeading": "Operational Clarity Engineered by Design",
+    "homeHeroHeading": "Test",
     "homeTagline": "Value from every process.",
     "homeHeroCopy": "H-Queex is a remote-first process improvement and operational engineering consultancy. Delivery is structured, asynchronous, and accountability-led from intake through implementation.",
     "homeHeroPrimaryCta": "Start with Intake",
@@ -147,7 +147,7 @@
     "homeSecondaryButton": "Request Updates",
     "homeUpdateSuccessMessage": "Request recorded in prototype mode. Update workflow integration is currently pending.",
     "homeFooterTagline": "Value from every process.",
-    "homeFooterCopyright": "© 2026 H-Queex. All rights reserved.",
+    "homeFooterCopyright": "\u00a9 2026 H-Queex. All rights reserved.",
     "homeFooterPortal": "Client Portal",
     "homeFooterLinkedIn": "LinkedIn",
     "homeFooterPrivacy": "Privacy Policy",
@@ -385,296 +385,2042 @@
       "valueKey": "homeMetaDescription",
       "mode": "first"
     },
-    { "page": "index.html", "selector": "title", "property": "textContent", "valueKey": "homeTitle", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(1)", "property": "textContent", "valueKey": "homeNavHome", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(2)", "property": "textContent", "valueKey": "homeNavAbout", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(3)", "property": "textContent", "valueKey": "homeNavServices", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(4)", "property": "textContent", "valueKey": "homeNavMethodology", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(5)", "property": "textContent", "valueKey": "homeNavIntake", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(6)", "property": "textContent", "valueKey": "homeNavPortal", "mode": "first" },
-    { "page": "index.html", "selector": ".site-nav a:nth-of-type(7)", "property": "textContent", "valueKey": "homeNavSubmit", "mode": "first" },
-    { "page": "index.html", "selector": ".hero .eyebrow", "property": "textContent", "valueKey": "homeHeroEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": ".hero h1", "property": "textContent", "valueKey": "homeHeroHeading", "mode": "first" },
-    { "page": "index.html", "selector": ".hero .tagline", "property": "textContent", "valueKey": "homeTagline", "mode": "first" },
-    { "page": "index.html", "selector": ".hero .hero-copy", "property": "textContent", "valueKey": "homeHeroCopy", "mode": "first" },
-    { "page": "index.html", "selector": ".hero-cta a:nth-of-type(1)", "property": "textContent", "valueKey": "homeHeroPrimaryCta", "mode": "first" },
-    { "page": "index.html", "selector": ".hero-cta a:nth-of-type(2)", "property": "textContent", "valueKey": "homeHeroSecondaryCta", "mode": "first" },
-    { "page": "index.html", "selector": ".hero-metrics li:nth-of-type(1) .metric-label", "property": "textContent", "valueKey": "homeMetricLabelOne", "mode": "first" },
-    { "page": "index.html", "selector": ".hero-metrics li:nth-of-type(2) .metric-label", "property": "textContent", "valueKey": "homeMetricLabelTwo", "mode": "first" },
-    { "page": "index.html", "selector": ".hero-metrics li:nth-of-type(3) .metric-label", "property": "textContent", "valueKey": "homeMetricLabelThree", "mode": "first" },
-    { "page": "index.html", "selector": ".command-card .command-kicker", "property": "textContent", "valueKey": "homePromiseKicker", "mode": "first" },
-    { "page": "index.html", "selector": ".command-card h2", "property": "textContent", "valueKey": "homePromiseHeading", "mode": "first" },
-    { "page": "index.html", "selector": ".command-card > p:nth-of-type(2)", "property": "textContent", "valueKey": "homePromiseBody", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(1) span", "property": "textContent", "valueKey": "homePromiseApproachLabel", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(1) strong", "property": "textContent", "valueKey": "homePromiseApproachValue", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(2) span", "property": "textContent", "valueKey": "homePromiseDeliveryLabel", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(2) strong", "property": "textContent", "valueKey": "homePromiseDeliveryValue", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(3) span", "property": "textContent", "valueKey": "homePromiseControlLabel", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(3) strong", "property": "textContent", "valueKey": "homePromiseControlValue", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(4) span", "property": "textContent", "valueKey": "homePromiseStatusLabel", "mode": "first" },
-    { "page": "index.html", "selector": ".command-grid article:nth-of-type(4) strong", "property": "textContent", "valueKey": "homePromiseStatusValue", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(1)", "property": "textContent", "valueKey": "homeTickerItem1", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(2)", "property": "textContent", "valueKey": "homeTickerItem2", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(3)", "property": "textContent", "valueKey": "homeTickerItem3", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(4)", "property": "textContent", "valueKey": "homeTickerItem4", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(5)", "property": "textContent", "valueKey": "homeTickerItem5", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(6)", "property": "textContent", "valueKey": "homeTickerItem6", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(7)", "property": "textContent", "valueKey": "homeTickerItem7", "mode": "first" },
-    { "page": "index.html", "selector": ".ticker-track span:nth-of-type(8)", "property": "textContent", "valueKey": "homeTickerItem8", "mode": "first" },
-    { "page": "index.html", "selector": "#about .section-head .eyebrow", "property": "textContent", "valueKey": "homeAboutEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": "#about .section-head h2", "property": "textContent", "valueKey": "homeAboutHeading", "mode": "first" },
-    { "page": "index.html", "selector": "#about .about-card:nth-of-type(1) h3", "property": "textContent", "valueKey": "homeAboutCard1Title", "mode": "first" },
-    { "page": "index.html", "selector": "#about .about-card:nth-of-type(1) p", "property": "textContent", "valueKey": "homeAboutCard1Body", "mode": "first" },
-    { "page": "index.html", "selector": "#about .about-card:nth-of-type(2) h3", "property": "textContent", "valueKey": "homeAboutCard2Title", "mode": "first" },
-    { "page": "index.html", "selector": "#about .about-card:nth-of-type(2) p", "property": "textContent", "valueKey": "homeAboutCard2Body", "mode": "first" },
-    { "page": "index.html", "selector": "#about .about-card:nth-of-type(3) h3", "property": "textContent", "valueKey": "homeAboutCard3Title", "mode": "first" },
-    { "page": "index.html", "selector": "#about .about-card:nth-of-type(3) p", "property": "textContent", "valueKey": "homeAboutCard3Body", "mode": "first" },
-    { "page": "index.html", "selector": "#services .section-head .eyebrow", "property": "textContent", "valueKey": "homeServicesEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": "#services .section-head h2", "property": "textContent", "valueKey": "homeServicesHeading", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(1) h3", "property": "textContent", "valueKey": "homeTier1Title", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(1) p:not(.tier-note)", "property": "textContent", "valueKey": "homeTier1Body", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(1) li:nth-of-type(1)", "property": "textContent", "valueKey": "homeTier1Item1", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(1) li:nth-of-type(2)", "property": "textContent", "valueKey": "homeTier1Item2", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(1) li:nth-of-type(3)", "property": "textContent", "valueKey": "homeTier1Item3", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(1) .tier-note", "property": "textContent", "valueKey": "homeTier1Note", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) .tier-badge", "property": "textContent", "valueKey": "homeTier2Badge", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) h3", "property": "textContent", "valueKey": "homeTier2Title", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) p:not(.tier-badge):not(.tier-note)", "property": "textContent", "valueKey": "homeTier2Body", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) li:nth-of-type(1)", "property": "textContent", "valueKey": "homeTier2Item1", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) li:nth-of-type(2)", "property": "textContent", "valueKey": "homeTier2Item2", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) li:nth-of-type(3)", "property": "textContent", "valueKey": "homeTier2Item3", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(2) .tier-note", "property": "textContent", "valueKey": "homeTier2Note", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(3) h3", "property": "textContent", "valueKey": "homeTier3Title", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(3) p:not(.tier-note)", "property": "textContent", "valueKey": "homeTier3Body", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(3) li:nth-of-type(1)", "property": "textContent", "valueKey": "homeTier3Item1", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(3) li:nth-of-type(2)", "property": "textContent", "valueKey": "homeTier3Item2", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(3) li:nth-of-type(3)", "property": "textContent", "valueKey": "homeTier3Item3", "mode": "first" },
-    { "page": "index.html", "selector": "#services .tier-card:nth-of-type(3) .tier-note", "property": "textContent", "valueKey": "homeTier3Note", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .section-head .eyebrow", "property": "textContent", "valueKey": "homeMethodEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .section-head h2", "property": "textContent", "valueKey": "homeMethodHeading", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(1) h3", "property": "textContent", "valueKey": "homeStep1Title", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(1) p", "property": "textContent", "valueKey": "homeStep1Body", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(2) h3", "property": "textContent", "valueKey": "homeStep2Title", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(2) p", "property": "textContent", "valueKey": "homeStep2Body", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(3) h3", "property": "textContent", "valueKey": "homeStep3Title", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(3) p", "property": "textContent", "valueKey": "homeStep3Body", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(4) h3", "property": "textContent", "valueKey": "homeStep4Title", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(4) p", "property": "textContent", "valueKey": "homeStep4Body", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(5) h3", "property": "textContent", "valueKey": "homeStep5Title", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(5) p", "property": "textContent", "valueKey": "homeStep5Body", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(6) h3", "property": "textContent", "valueKey": "homeStep6Title", "mode": "first" },
-    { "page": "index.html", "selector": "#methodology .step-card:nth-of-type(6) p", "property": "textContent", "valueKey": "homeStep6Body", "mode": "first" },
-    { "page": "index.html", "selector": ".section-soft .section-head .eyebrow", "property": "textContent", "valueKey": "homeWorkflowEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": ".section-soft .section-head h2", "property": "textContent", "valueKey": "homeWorkflowHeading", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(1) h3", "property": "textContent", "valueKey": "homeWorkflow1Title", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(1) p", "property": "textContent", "valueKey": "homeWorkflow1Body", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(2) h3", "property": "textContent", "valueKey": "homeWorkflow2Title", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(2) p", "property": "textContent", "valueKey": "homeWorkflow2Body", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(3) h3", "property": "textContent", "valueKey": "homeWorkflow3Title", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(3) p", "property": "textContent", "valueKey": "homeWorkflow3Body", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(4) h3", "property": "textContent", "valueKey": "homeWorkflow4Title", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(4) p", "property": "textContent", "valueKey": "homeWorkflow4Body", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(5) h3", "property": "textContent", "valueKey": "homeWorkflow5Title", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(5) p", "property": "textContent", "valueKey": "homeWorkflow5Body", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(6) h3", "property": "textContent", "valueKey": "homeWorkflow6Title", "mode": "first" },
-    { "page": "index.html", "selector": ".workflow-list li:nth-of-type(6) p", "property": "textContent", "valueKey": "homeWorkflow6Body", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .section-head .eyebrow", "property": "textContent", "valueKey": "homeFitEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .section-head h2", "property": "textContent", "valueKey": "homeFitHeading", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(1) h3", "property": "textContent", "valueKey": "homeFitDesignedTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(1) li:nth-of-type(1)", "property": "textContent", "valueKey": "homeFitDesignedItem1", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(1) li:nth-of-type(2)", "property": "textContent", "valueKey": "homeFitDesignedItem2", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(1) li:nth-of-type(3)", "property": "textContent", "valueKey": "homeFitDesignedItem3", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(2) h3", "property": "textContent", "valueKey": "homeFitOutsideTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(2) li:nth-of-type(1)", "property": "textContent", "valueKey": "homeFitOutsideItem1", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(2) li:nth-of-type(2)", "property": "textContent", "valueKey": "homeFitOutsideItem2", "mode": "first" },
-    { "page": "index.html", "selector": "#fit .fit-card:nth-of-type(2) li:nth-of-type(3)", "property": "textContent", "valueKey": "homeFitOutsideItem3", "mode": "first" },
-    { "page": "index.html", "selector": "main > section:nth-of-type(8) .section-head .eyebrow", "property": "textContent", "valueKey": "homeProofEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": "main > section:nth-of-type(8) .section-head h2", "property": "textContent", "valueKey": "homeProofHeading", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(1) h3", "property": "textContent", "valueKey": "homeRoadmapMissionTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(1) p", "property": "textContent", "valueKey": "homeRoadmapMissionStatus", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(2) h3", "property": "textContent", "valueKey": "homeRoadmapSwotTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(2) p", "property": "textContent", "valueKey": "homeRoadmapSwotStatus", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(3) h3", "property": "textContent", "valueKey": "homeRoadmapContextTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(3) p", "property": "textContent", "valueKey": "homeRoadmapContextStatus", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(4) h3", "property": "textContent", "valueKey": "homeRoadmapScopeTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(4) p", "property": "textContent", "valueKey": "homeRoadmapScopeStatus", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(5) h3", "property": "textContent", "valueKey": "homeRoadmapGrowthTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(5) p", "property": "textContent", "valueKey": "homeRoadmapGrowthStatus", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(6) h3", "property": "textContent", "valueKey": "homeRoadmapMaturityTitle", "mode": "first" },
-    { "page": "index.html", "selector": "#roadmap .status-item:nth-of-type(6) p", "property": "textContent", "valueKey": "homeRoadmapMaturityStatus", "mode": "first" },
-    { "page": "index.html", "selector": ".future-proof h3", "property": "textContent", "valueKey": "homeFutureProofTitle", "mode": "first" },
-    { "page": "index.html", "selector": ".future-proof p", "property": "textContent", "valueKey": "homeFutureProofBody", "mode": "first" },
-    { "page": "index.html", "selector": "#intake .intake-copy .eyebrow", "property": "textContent", "valueKey": "homeIntakeEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": "#intake .intake-copy h2", "property": "textContent", "valueKey": "homeIntakeHeading", "mode": "first" },
-    { "page": "index.html", "selector": "#intake .intake-copy > p:nth-of-type(2)", "property": "textContent", "valueKey": "homeIntakeIntro", "mode": "first" },
-    { "page": "index.html", "selector": "#intake .intake-copy > p.micro-note:nth-of-type(3)", "property": "textContent", "valueKey": "homeIntakeNotePolicy", "mode": "first" },
-    { "page": "index.html", "selector": "#intake .intake-copy > p.micro-note:nth-of-type(4)", "property": "textContent", "valueKey": "homeIntakeNoteAgreement", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form label:nth-of-type(1)", "property": "firstTextNode", "valueKey": "homeIntakeLabelCompany", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form label:nth-of-type(2)", "property": "firstTextNode", "valueKey": "homeIntakeLabelContact", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form label:nth-of-type(3)", "property": "firstTextNode", "valueKey": "homeIntakeLabelSector", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form label:nth-of-type(4)", "property": "firstTextNode", "valueKey": "homeIntakeLabelSize", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form select[name='size'] option:nth-of-type(1)", "property": "textContent", "valueKey": "homeIntakeSizePlaceholder", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form select[name='size'] option:nth-of-type(2)", "property": "textContent", "valueKey": "homeIntakeSize1", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form select[name='size'] option:nth-of-type(3)", "property": "textContent", "valueKey": "homeIntakeSize2", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form select[name='size'] option:nth-of-type(4)", "property": "textContent", "valueKey": "homeIntakeSize3", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form select[name='size'] option:nth-of-type(5)", "property": "textContent", "valueKey": "homeIntakeSize4", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form select[name='size'] option:nth-of-type(6)", "property": "textContent", "valueKey": "homeIntakeSize5", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form label:nth-of-type(5)", "property": "firstTextNode", "valueKey": "homeIntakeLabelChallenge", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form label:nth-of-type(6)", "property": "firstTextNode", "valueKey": "homeIntakeLabelFiles", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form button[type='submit']", "property": "textContent", "valueKey": "homeIntakeButton", "mode": "first" },
-    { "page": "index.html", "selector": "#intake-form .form-note", "property": "textContent", "valueKey": "homeIntakeFormNote", "mode": "first" },
-    { "page": "index.html", "selector": ".secondary-card .eyebrow", "property": "textContent", "valueKey": "homeSecondaryEyebrow", "mode": "first" },
-    { "page": "index.html", "selector": ".secondary-card h2", "property": "textContent", "valueKey": "homeSecondaryHeading", "mode": "first" },
-    { "page": "index.html", "selector": ".secondary-card > div > p:not(.eyebrow)", "property": "textContent", "valueKey": "homeSecondaryIntro", "mode": "first" },
-    { "page": "index.html", "selector": "#update-form label", "property": "firstTextNode", "valueKey": "homeSecondaryEmailLabel", "mode": "first" },
-    { "page": "index.html", "selector": "#update-form button[type='submit']", "property": "textContent", "valueKey": "homeSecondaryButton", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-tagline", "property": "textContent", "valueKey": "homeFooterTagline", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-copyright", "property": "textContent", "valueKey": "homeFooterCopyright", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-links a:nth-of-type(1)", "property": "textContent", "valueKey": "homeFooterPortal", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-links a:nth-of-type(2)", "property": "firstTextNode", "valueKey": "homeFooterLinkedIn", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-links a:nth-of-type(3)", "property": "textContent", "valueKey": "homeFooterPrivacy", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-links a:nth-of-type(4)", "property": "textContent", "valueKey": "homeFooterTerms", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-links a:nth-of-type(5)", "property": "textContent", "valueKey": "homeFooterEditContent", "mode": "first" },
-    { "page": "index.html", "selector": ".footer-links a:nth-of-type(6)", "property": "textContent", "valueKey": "homeFooterBackTop", "mode": "first" },
-    { "page": "portal.html", "selector": "title", "property": "textContent", "valueKey": "portalTitle", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-header-actions a", "property": "textContent", "valueKey": "portalHeaderWebsite", "mode": "first" },
-    { "page": "portal.html", "selector": "#logout-btn", "property": "textContent", "valueKey": "portalHeaderSignOut", "mode": "first" },
-    { "page": "portal.html", "selector": ".auth-card .eyebrow", "property": "textContent", "valueKey": "portalLoginEyebrow", "mode": "first" },
-    { "page": "portal.html", "selector": ".auth-card h1", "property": "textContent", "valueKey": "portalLoginHeading", "mode": "first" },
-    { "page": "portal.html", "selector": ".auth-card p:not(.eyebrow)", "property": "textContent", "valueKey": "portalLoginIntro", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form label:nth-of-type(1)", "property": "firstTextNode", "valueKey": "portalLabelDisplayName", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form label:nth-of-type(2)", "property": "firstTextNode", "valueKey": "portalLabelEmail", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form label:nth-of-type(3)", "property": "firstTextNode", "valueKey": "portalLabelAccessRole", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form select[name='role'] option:nth-of-type(1)", "property": "textContent", "valueKey": "portalRoleClient", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form select[name='role'] option:nth-of-type(2)", "property": "textContent", "valueKey": "portalRoleOperator", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form label:nth-of-type(4)", "property": "firstTextNode", "valueKey": "portalLabelWorkspace", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form input[name='workspaceName']", "property": "placeholder", "valueKey": "portalWorkspacePlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form label:nth-of-type(5)", "property": "firstTextNode", "valueKey": "portalLabelPassphrase", "mode": "first" },
-    { "page": "portal.html", "selector": "#login-form button[type='submit']", "property": "textContent", "valueKey": "portalEnterButton", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-sidebar .sidebar-block:nth-of-type(1) .eyebrow", "property": "textContent", "valueKey": "portalSessionEyebrow", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-switch-block .eyebrow", "property": "textContent", "valueKey": "portalControlEyebrow", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-switch-block .inline-label:nth-of-type(1)", "property": "textContent", "valueKey": "portalControlActiveWorkspace", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-switch-block .inline-label:nth-of-type(2)", "property": "textContent", "valueKey": "portalControlActiveLogo", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-logo-update-input", "property": "placeholder", "valueKey": "portalControlLogoPlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": "#update-logo-btn", "property": "textContent", "valueKey": "portalControlUpdateLogo", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-form label:nth-of-type(1)", "property": "firstTextNode", "valueKey": "portalControlAddWorkspace", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-name-input", "property": "placeholder", "valueKey": "portalControlAddWorkspacePlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-form label:nth-of-type(2)", "property": "firstTextNode", "valueKey": "portalControlLogoUrl", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-logo-input", "property": "placeholder", "valueKey": "portalControlLogoUrlPlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-form label:nth-of-type(3)", "property": "firstTextNode", "valueKey": "portalControlInitialStatus", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-status-input option:nth-of-type(1)", "property": "textContent", "valueKey": "portalControlStatusActive", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-status-input option:nth-of-type(2)", "property": "textContent", "valueKey": "portalControlStatusCompleted", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-status-input option:nth-of-type(3)", "property": "textContent", "valueKey": "portalControlStatusArchived", "mode": "first" },
-    { "page": "portal.html", "selector": "#workspace-form button[type='submit']", "property": "textContent", "valueKey": "portalControlCreateWorkspace", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-nav .tab-btn:nth-of-type(1)", "property": "textContent", "valueKey": "portalNavOverview", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-nav .tab-btn:nth-of-type(2)", "property": "textContent", "valueKey": "portalNavFiles", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-nav .tab-btn:nth-of-type(3)", "property": "textContent", "valueKey": "portalNavDeliverables", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-nav .tab-btn:nth-of-type(4)", "property": "textContent", "valueKey": "portalNavMessages", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-nav .tab-btn:nth-of-type(5)", "property": "textContent", "valueKey": "portalNavGovernance", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-sidebar .sidebar-block:nth-of-type(3) .eyebrow", "property": "textContent", "valueKey": "portalBillingEyebrow", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-sidebar .sidebar-block:nth-of-type(3) p:nth-of-type(2)", "property": "textContent", "valueKey": "portalBillingBody", "mode": "first" },
-    { "page": "portal.html", "selector": ".portal-sidebar .sidebar-block:nth-of-type(3) .pill", "property": "textContent", "valueKey": "portalBillingPill", "mode": "first" },
-    { "page": "portal.html", "selector": "#overview-title", "property": "textContent", "valueKey": "portalOverviewTitle", "mode": "first" },
-    { "page": "portal.html", "selector": "#portfolio-view-btn", "property": "textContent", "valueKey": "portalOverviewBackPortfolio", "mode": "first" },
-    { "page": "portal.html", "selector": ".workspace-identity-label", "property": "textContent", "valueKey": "portalOverviewIdentityLabel", "mode": "first" },
-    { "page": "portal.html", "selector": ".operator-controls label:nth-of-type(1)", "property": "firstTextNode", "valueKey": "portalOverviewSearchLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#client-search", "property": "placeholder", "valueKey": "portalOverviewSearchPlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": ".operator-controls label:nth-of-type(2)", "property": "firstTextNode", "valueKey": "portalOverviewFilterLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-filter option:nth-of-type(1)", "property": "textContent", "valueKey": "portalOverviewFilterAll", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-filter option:nth-of-type(2)", "property": "textContent", "valueKey": "portalOverviewFilterActive", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-filter option:nth-of-type(3)", "property": "textContent", "valueKey": "portalOverviewFilterCompleted", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-filter option:nth-of-type(4)", "property": "textContent", "valueKey": "portalOverviewFilterArchived", "mode": "first" },
-    { "page": "portal.html", "selector": ".operator-controls label:nth-of-type(3)", "property": "firstTextNode", "valueKey": "portalOverviewTrendLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#kpi-window option:nth-of-type(1)", "property": "textContent", "valueKey": "portalOverviewTrend7", "mode": "first" },
-    { "page": "portal.html", "selector": "#kpi-window option:nth-of-type(2)", "property": "textContent", "valueKey": "portalOverviewTrend30", "mode": "first" },
-    { "page": "portal.html", "selector": "#kpi-window option:nth-of-type(3)", "property": "textContent", "valueKey": "portalOverviewTrend90", "mode": "first" },
-    { "page": "portal.html", "selector": ".operator-kpis article:nth-of-type(1) .label", "property": "textContent", "valueKey": "portalOverviewKpiActive", "mode": "first" },
-    { "page": "portal.html", "selector": ".operator-kpis article:nth-of-type(2) .label", "property": "textContent", "valueKey": "portalOverviewKpiCompleted", "mode": "first" },
-    { "page": "portal.html", "selector": ".operator-kpis article:nth-of-type(3) .label", "property": "textContent", "valueKey": "portalOverviewKpiArchived", "mode": "first" },
-    { "page": "portal.html", "selector": "#active-group h4", "property": "textContent", "valueKey": "portalOverviewGroupActive", "mode": "first" },
-    { "page": "portal.html", "selector": "#completed-group h4", "property": "textContent", "valueKey": "portalOverviewGroupCompleted", "mode": "first" },
-    { "page": "portal.html", "selector": "#archived-group h4", "property": "textContent", "valueKey": "portalOverviewGroupArchived", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(1) span", "property": "textContent", "valueKey": "portalStatusLabel1", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(1) strong", "property": "textContent", "valueKey": "portalStatusValue1", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(2) span", "property": "textContent", "valueKey": "portalStatusLabel2", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(2) strong", "property": "textContent", "valueKey": "portalStatusValue2", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(3) span", "property": "textContent", "valueKey": "portalStatusLabel3", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(3) strong", "property": "textContent", "valueKey": "portalStatusValue3", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(4) span", "property": "textContent", "valueKey": "portalStatusLabel4", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(4) strong", "property": "textContent", "valueKey": "portalStatusValue4", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(5) span", "property": "textContent", "valueKey": "portalStatusLabel5", "mode": "first" },
-    { "page": "portal.html", "selector": "#status-strip article:nth-of-type(5) strong", "property": "textContent", "valueKey": "portalStatusValue5", "mode": "first" },
-    { "page": "portal.html", "selector": ".overview-grid article:nth-of-type(1) .label", "property": "textContent", "valueKey": "portalOverviewNextActionLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#next-action", "property": "textContent", "valueKey": "portalOverviewNextActionValue", "mode": "first" },
-    { "page": "portal.html", "selector": ".overview-grid article:nth-of-type(2) .label", "property": "textContent", "valueKey": "portalOverviewLatestLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#latest-deliverable", "property": "textContent", "valueKey": "portalOverviewLatestValue", "mode": "first" },
-    { "page": "portal.html", "selector": ".overview-grid article:nth-of-type(3) .label", "property": "textContent", "valueKey": "portalOverviewUnreadLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#unread-count", "property": "textContent", "valueKey": "portalOverviewUnreadValue", "mode": "first" },
-    { "page": "portal.html", "selector": ".notification-card h4", "property": "textContent", "valueKey": "portalOverviewNotificationsHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files .panel-head h3", "property": "textContent", "valueKey": "portalFilesHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files .panel-head p", "property": "textContent", "valueKey": "portalFilesIntro", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form label:nth-of-type(1)", "property": "firstTextNode", "valueKey": "portalFilesLabelName", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form label:nth-of-type(2)", "property": "firstTextNode", "valueKey": "portalFilesLabelType", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form select[name='fileType'] option:nth-of-type(1)", "property": "textContent", "valueKey": "portalFilesTypeDocument", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form select[name='fileType'] option:nth-of-type(2)", "property": "textContent", "valueKey": "portalFilesTypeSpreadsheet", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form select[name='fileType'] option:nth-of-type(3)", "property": "textContent", "valueKey": "portalFilesTypeVideo", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form label:nth-of-type(3)", "property": "firstTextNode", "valueKey": "portalFilesLabelNotes", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form input[name='fileNotes']", "property": "placeholder", "valueKey": "portalFilesNotesPlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": "#upload-form button[type='submit']", "property": "textContent", "valueKey": "portalFilesButton", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files th:nth-of-type(1)", "property": "textContent", "valueKey": "portalFilesTableName", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files th:nth-of-type(2)", "property": "textContent", "valueKey": "portalFilesTableType", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files th:nth-of-type(3)", "property": "textContent", "valueKey": "portalFilesTableNotes", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files th:nth-of-type(4)", "property": "textContent", "valueKey": "portalFilesTableBy", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-files th:nth-of-type(5)", "property": "textContent", "valueKey": "portalFilesTableTime", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-deliverables .panel-head h3", "property": "textContent", "valueKey": "portalDeliverablesHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-deliverables .panel-head p", "property": "textContent", "valueKey": "portalDeliverablesIntro", "mode": "first" },
-    { "page": "portal.html", "selector": "#deliverable-form label:nth-of-type(1)", "property": "firstTextNode", "valueKey": "portalDeliverablesLabelTitle", "mode": "first" },
-    { "page": "portal.html", "selector": "#deliverable-form label:nth-of-type(2)", "property": "firstTextNode", "valueKey": "portalDeliverablesLabelVersion", "mode": "first" },
-    { "page": "portal.html", "selector": "#deliverable-form input[name='deliverableVersion']", "property": "placeholder", "valueKey": "portalDeliverablesVersionPlaceholder", "mode": "first" },
-    { "page": "portal.html", "selector": "#deliverable-form label:nth-of-type(3)", "property": "firstTextNode", "valueKey": "portalDeliverablesLabelSummary", "mode": "first" },
-    { "page": "portal.html", "selector": "#deliverable-form button[type='submit']", "property": "textContent", "valueKey": "portalDeliverablesButton", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-messages .panel-head h3", "property": "textContent", "valueKey": "portalMessagesHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-messages .panel-head p", "property": "textContent", "valueKey": "portalMessagesIntro", "mode": "first" },
-    { "page": "portal.html", "selector": "#message-form label", "property": "firstTextNode", "valueKey": "portalMessagesLabel", "mode": "first" },
-    { "page": "portal.html", "selector": "#message-form button[type='submit']", "property": "textContent", "valueKey": "portalMessagesButton", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .panel-head h3", "property": "textContent", "valueKey": "portalGovernanceHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .panel-head p", "property": "textContent", "valueKey": "portalGovernanceIntro", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .governance-grid article:nth-of-type(1) h4", "property": "textContent", "valueKey": "portalGovernancePhaseHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#phase-select option:nth-of-type(1)", "property": "textContent", "valueKey": "portalGovernancePhaseIntake", "mode": "first" },
-    { "page": "portal.html", "selector": "#phase-select option:nth-of-type(2)", "property": "textContent", "valueKey": "portalGovernancePhaseQualification", "mode": "first" },
-    { "page": "portal.html", "selector": "#phase-select option:nth-of-type(3)", "property": "textContent", "valueKey": "portalGovernancePhaseEvidence", "mode": "first" },
-    { "page": "portal.html", "selector": "#phase-select option:nth-of-type(4)", "property": "textContent", "valueKey": "portalGovernancePhaseDesign", "mode": "first" },
-    { "page": "portal.html", "selector": "#phase-select option:nth-of-type(5)", "property": "textContent", "valueKey": "portalGovernancePhaseDelivery", "mode": "first" },
-    { "page": "portal.html", "selector": "#phase-select option:nth-of-type(6)", "property": "textContent", "valueKey": "portalGovernancePhaseMonitoring", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .governance-grid article:nth-of-type(2) h4", "property": "textContent", "valueKey": "portalGovernancePermissionsHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .governance-grid article:nth-of-type(2) li:nth-of-type(1)", "property": "textContent", "valueKey": "portalGovernanceClientPermission", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .governance-grid article:nth-of-type(2) li:nth-of-type(2)", "property": "textContent", "valueKey": "portalGovernanceOperatorPermission", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .governance-grid article:nth-of-type(3) h4", "property": "textContent", "valueKey": "portalGovernanceSecurityHeading", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance .governance-grid article:nth-of-type(3) p", "property": "textContent", "valueKey": "portalGovernanceSecurityBody", "mode": "first" },
-    { "page": "portal.html", "selector": "#panel-governance > h4", "property": "textContent", "valueKey": "portalGovernanceActivityHeading", "mode": "first" },
-    { "page": "privacy.html", "selector": "title", "property": "textContent", "valueKey": "privacyTitle", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page .eyebrow", "property": "textContent", "valueKey": "privacyEyebrow", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page h1", "property": "textContent", "valueKey": "privacyHeading", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page > p:nth-of-type(2)", "property": "textContent", "valueKey": "privacyIntro", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page h2:nth-of-type(1)", "property": "textContent", "valueKey": "privacyScopeHeading", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page > p:nth-of-type(3)", "property": "textContent", "valueKey": "privacyScopeBody", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page h2:nth-of-type(2)", "property": "textContent", "valueKey": "privacyCoverageHeading", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page li:nth-of-type(1)", "property": "textContent", "valueKey": "privacyCoverageItem1", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page li:nth-of-type(2)", "property": "textContent", "valueKey": "privacyCoverageItem2", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page li:nth-of-type(3)", "property": "textContent", "valueKey": "privacyCoverageItem3", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page li:nth-of-type(4)", "property": "textContent", "valueKey": "privacyCoverageItem4", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page li:nth-of-type(5)", "property": "textContent", "valueKey": "privacyCoverageItem5", "mode": "first" },
-    { "page": "privacy.html", "selector": ".legal-page a.btn", "property": "textContent", "valueKey": "privacyReturnHome", "mode": "first" },
-    { "page": "terms.html", "selector": "title", "property": "textContent", "valueKey": "termsTitle", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page .eyebrow", "property": "textContent", "valueKey": "termsEyebrow", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page h1", "property": "textContent", "valueKey": "termsHeading", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page > p:nth-of-type(2)", "property": "textContent", "valueKey": "termsIntro", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page h2", "property": "textContent", "valueKey": "termsCoverageHeading", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page li:nth-of-type(1)", "property": "textContent", "valueKey": "termsCoverageItem1", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page li:nth-of-type(2)", "property": "textContent", "valueKey": "termsCoverageItem2", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page li:nth-of-type(3)", "property": "textContent", "valueKey": "termsCoverageItem3", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page li:nth-of-type(4)", "property": "textContent", "valueKey": "termsCoverageItem4", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page li:nth-of-type(5)", "property": "textContent", "valueKey": "termsCoverageItem5", "mode": "first" },
-    { "page": "terms.html", "selector": ".legal-page a.btn", "property": "textContent", "valueKey": "termsReturnHome", "mode": "first" }
+    {
+      "page": "index.html",
+      "selector": "title",
+      "property": "textContent",
+      "valueKey": "homeTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeNavHome",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeNavAbout",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeNavServices",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "homeNavMethodology",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "homeNavIntake",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(6)",
+      "property": "textContent",
+      "valueKey": "homeNavPortal",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(7)",
+      "property": "textContent",
+      "valueKey": "homeNavSubmit",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeHeroEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero h1",
+      "property": "textContent",
+      "valueKey": "homeHeroHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero .tagline",
+      "property": "textContent",
+      "valueKey": "homeTagline",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero .hero-copy",
+      "property": "textContent",
+      "valueKey": "homeHeroCopy",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero-cta a:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeHeroPrimaryCta",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero-cta a:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeHeroSecondaryCta",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero-metrics li:nth-of-type(1) .metric-label",
+      "property": "textContent",
+      "valueKey": "homeMetricLabelOne",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero-metrics li:nth-of-type(2) .metric-label",
+      "property": "textContent",
+      "valueKey": "homeMetricLabelTwo",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".hero-metrics li:nth-of-type(3) .metric-label",
+      "property": "textContent",
+      "valueKey": "homeMetricLabelThree",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-card .command-kicker",
+      "property": "textContent",
+      "valueKey": "homePromiseKicker",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-card h2",
+      "property": "textContent",
+      "valueKey": "homePromiseHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-card > p:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homePromiseBody",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(1) span",
+      "property": "textContent",
+      "valueKey": "homePromiseApproachLabel",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(1) strong",
+      "property": "textContent",
+      "valueKey": "homePromiseApproachValue",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(2) span",
+      "property": "textContent",
+      "valueKey": "homePromiseDeliveryLabel",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(2) strong",
+      "property": "textContent",
+      "valueKey": "homePromiseDeliveryValue",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(3) span",
+      "property": "textContent",
+      "valueKey": "homePromiseControlLabel",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(3) strong",
+      "property": "textContent",
+      "valueKey": "homePromiseControlValue",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(4) span",
+      "property": "textContent",
+      "valueKey": "homePromiseStatusLabel",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".command-grid article:nth-of-type(4) strong",
+      "property": "textContent",
+      "valueKey": "homePromiseStatusValue",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem4",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem5",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(6)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem6",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(7)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem7",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(8)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem8",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .section-head .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeAboutEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .section-head h2",
+      "property": "textContent",
+      "valueKey": "homeAboutHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .about-card:nth-of-type(1) h3",
+      "property": "textContent",
+      "valueKey": "homeAboutCard1Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .about-card:nth-of-type(1) p",
+      "property": "textContent",
+      "valueKey": "homeAboutCard1Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .about-card:nth-of-type(2) h3",
+      "property": "textContent",
+      "valueKey": "homeAboutCard2Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .about-card:nth-of-type(2) p",
+      "property": "textContent",
+      "valueKey": "homeAboutCard2Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .about-card:nth-of-type(3) h3",
+      "property": "textContent",
+      "valueKey": "homeAboutCard3Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#about .about-card:nth-of-type(3) p",
+      "property": "textContent",
+      "valueKey": "homeAboutCard3Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .section-head .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeServicesEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .section-head h2",
+      "property": "textContent",
+      "valueKey": "homeServicesHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(1) h3",
+      "property": "textContent",
+      "valueKey": "homeTier1Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(1) p:not(.tier-note)",
+      "property": "textContent",
+      "valueKey": "homeTier1Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(1) li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeTier1Item1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(1) li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeTier1Item2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(1) li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeTier1Item3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(1) .tier-note",
+      "property": "textContent",
+      "valueKey": "homeTier1Note",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) .tier-badge",
+      "property": "textContent",
+      "valueKey": "homeTier2Badge",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) h3",
+      "property": "textContent",
+      "valueKey": "homeTier2Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) p:not(.tier-badge):not(.tier-note)",
+      "property": "textContent",
+      "valueKey": "homeTier2Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeTier2Item1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeTier2Item2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeTier2Item3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(2) .tier-note",
+      "property": "textContent",
+      "valueKey": "homeTier2Note",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(3) h3",
+      "property": "textContent",
+      "valueKey": "homeTier3Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(3) p:not(.tier-note)",
+      "property": "textContent",
+      "valueKey": "homeTier3Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(3) li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeTier3Item1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(3) li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeTier3Item2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(3) li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeTier3Item3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#services .tier-card:nth-of-type(3) .tier-note",
+      "property": "textContent",
+      "valueKey": "homeTier3Note",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .section-head .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeMethodEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .section-head h2",
+      "property": "textContent",
+      "valueKey": "homeMethodHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(1) h3",
+      "property": "textContent",
+      "valueKey": "homeStep1Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(1) p",
+      "property": "textContent",
+      "valueKey": "homeStep1Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(2) h3",
+      "property": "textContent",
+      "valueKey": "homeStep2Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(2) p",
+      "property": "textContent",
+      "valueKey": "homeStep2Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(3) h3",
+      "property": "textContent",
+      "valueKey": "homeStep3Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(3) p",
+      "property": "textContent",
+      "valueKey": "homeStep3Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(4) h3",
+      "property": "textContent",
+      "valueKey": "homeStep4Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(4) p",
+      "property": "textContent",
+      "valueKey": "homeStep4Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(5) h3",
+      "property": "textContent",
+      "valueKey": "homeStep5Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(5) p",
+      "property": "textContent",
+      "valueKey": "homeStep5Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(6) h3",
+      "property": "textContent",
+      "valueKey": "homeStep6Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#methodology .step-card:nth-of-type(6) p",
+      "property": "textContent",
+      "valueKey": "homeStep6Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".section-soft .section-head .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeWorkflowEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".section-soft .section-head h2",
+      "property": "textContent",
+      "valueKey": "homeWorkflowHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(1) h3",
+      "property": "textContent",
+      "valueKey": "homeWorkflow1Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(1) p",
+      "property": "textContent",
+      "valueKey": "homeWorkflow1Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(2) h3",
+      "property": "textContent",
+      "valueKey": "homeWorkflow2Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(2) p",
+      "property": "textContent",
+      "valueKey": "homeWorkflow2Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(3) h3",
+      "property": "textContent",
+      "valueKey": "homeWorkflow3Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(3) p",
+      "property": "textContent",
+      "valueKey": "homeWorkflow3Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(4) h3",
+      "property": "textContent",
+      "valueKey": "homeWorkflow4Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(4) p",
+      "property": "textContent",
+      "valueKey": "homeWorkflow4Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(5) h3",
+      "property": "textContent",
+      "valueKey": "homeWorkflow5Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(5) p",
+      "property": "textContent",
+      "valueKey": "homeWorkflow5Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(6) h3",
+      "property": "textContent",
+      "valueKey": "homeWorkflow6Title",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".workflow-list li:nth-of-type(6) p",
+      "property": "textContent",
+      "valueKey": "homeWorkflow6Body",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .section-head .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeFitEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .section-head h2",
+      "property": "textContent",
+      "valueKey": "homeFitHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(1) h3",
+      "property": "textContent",
+      "valueKey": "homeFitDesignedTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(1) li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeFitDesignedItem1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(1) li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeFitDesignedItem2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(1) li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeFitDesignedItem3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(2) h3",
+      "property": "textContent",
+      "valueKey": "homeFitOutsideTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(2) li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeFitOutsideItem1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(2) li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeFitOutsideItem2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#fit .fit-card:nth-of-type(2) li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeFitOutsideItem3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "main > section:nth-of-type(8) .section-head .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeProofEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "main > section:nth-of-type(8) .section-head h2",
+      "property": "textContent",
+      "valueKey": "homeProofHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(1) h3",
+      "property": "textContent",
+      "valueKey": "homeRoadmapMissionTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(1) p",
+      "property": "textContent",
+      "valueKey": "homeRoadmapMissionStatus",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(2) h3",
+      "property": "textContent",
+      "valueKey": "homeRoadmapSwotTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(2) p",
+      "property": "textContent",
+      "valueKey": "homeRoadmapSwotStatus",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(3) h3",
+      "property": "textContent",
+      "valueKey": "homeRoadmapContextTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(3) p",
+      "property": "textContent",
+      "valueKey": "homeRoadmapContextStatus",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(4) h3",
+      "property": "textContent",
+      "valueKey": "homeRoadmapScopeTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(4) p",
+      "property": "textContent",
+      "valueKey": "homeRoadmapScopeStatus",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(5) h3",
+      "property": "textContent",
+      "valueKey": "homeRoadmapGrowthTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(5) p",
+      "property": "textContent",
+      "valueKey": "homeRoadmapGrowthStatus",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(6) h3",
+      "property": "textContent",
+      "valueKey": "homeRoadmapMaturityTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#roadmap .status-item:nth-of-type(6) p",
+      "property": "textContent",
+      "valueKey": "homeRoadmapMaturityStatus",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".future-proof h3",
+      "property": "textContent",
+      "valueKey": "homeFutureProofTitle",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".future-proof p",
+      "property": "textContent",
+      "valueKey": "homeFutureProofBody",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake .intake-copy .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeIntakeEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake .intake-copy h2",
+      "property": "textContent",
+      "valueKey": "homeIntakeHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake .intake-copy > p:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeIntakeIntro",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake .intake-copy > p.micro-note:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeIntakeNotePolicy",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake .intake-copy > p.micro-note:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "homeIntakeNoteAgreement",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form label:nth-of-type(1)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeLabelCompany",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeLabelContact",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeLabelSector",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form label:nth-of-type(4)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeLabelSize",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form select[name='size'] option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeIntakeSizePlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form select[name='size'] option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "homeIntakeSize1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form select[name='size'] option:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeIntakeSize2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form select[name='size'] option:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "homeIntakeSize3",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form select[name='size'] option:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "homeIntakeSize4",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form select[name='size'] option:nth-of-type(6)",
+      "property": "textContent",
+      "valueKey": "homeIntakeSize5",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form label:nth-of-type(5)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeLabelChallenge",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form label:nth-of-type(6)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeLabelFiles",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "homeIntakeButton",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form .form-note",
+      "property": "textContent",
+      "valueKey": "homeIntakeFormNote",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".secondary-card .eyebrow",
+      "property": "textContent",
+      "valueKey": "homeSecondaryEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".secondary-card h2",
+      "property": "textContent",
+      "valueKey": "homeSecondaryHeading",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".secondary-card > div > p:not(.eyebrow)",
+      "property": "textContent",
+      "valueKey": "homeSecondaryIntro",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#update-form label",
+      "property": "firstTextNode",
+      "valueKey": "homeSecondaryEmailLabel",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#update-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "homeSecondaryButton",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-tagline",
+      "property": "textContent",
+      "valueKey": "homeFooterTagline",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-copyright",
+      "property": "textContent",
+      "valueKey": "homeFooterCopyright",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "homeFooterPortal",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "homeFooterLinkedIn",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "homeFooterPrivacy",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "homeFooterTerms",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "homeFooterEditContent",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(6)",
+      "property": "textContent",
+      "valueKey": "homeFooterBackTop",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "title",
+      "property": "textContent",
+      "valueKey": "portalTitle",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-header-actions a",
+      "property": "textContent",
+      "valueKey": "portalHeaderWebsite",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#logout-btn",
+      "property": "textContent",
+      "valueKey": "portalHeaderSignOut",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".auth-card .eyebrow",
+      "property": "textContent",
+      "valueKey": "portalLoginEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".auth-card h1",
+      "property": "textContent",
+      "valueKey": "portalLoginHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".auth-card p:not(.eyebrow)",
+      "property": "textContent",
+      "valueKey": "portalLoginIntro",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form label:nth-of-type(1)",
+      "property": "firstTextNode",
+      "valueKey": "portalLabelDisplayName",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "portalLabelEmail",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "portalLabelAccessRole",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form select[name='role'] option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalRoleClient",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form select[name='role'] option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalRoleOperator",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form label:nth-of-type(4)",
+      "property": "firstTextNode",
+      "valueKey": "portalLabelWorkspace",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form input[name='workspaceName']",
+      "property": "placeholder",
+      "valueKey": "portalWorkspacePlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form label:nth-of-type(5)",
+      "property": "firstTextNode",
+      "valueKey": "portalLabelPassphrase",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#login-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "portalEnterButton",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-sidebar .sidebar-block:nth-of-type(1) .eyebrow",
+      "property": "textContent",
+      "valueKey": "portalSessionEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-switch-block .eyebrow",
+      "property": "textContent",
+      "valueKey": "portalControlEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-switch-block .inline-label:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalControlActiveWorkspace",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-switch-block .inline-label:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalControlActiveLogo",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-logo-update-input",
+      "property": "placeholder",
+      "valueKey": "portalControlLogoPlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#update-logo-btn",
+      "property": "textContent",
+      "valueKey": "portalControlUpdateLogo",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-form label:nth-of-type(1)",
+      "property": "firstTextNode",
+      "valueKey": "portalControlAddWorkspace",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-name-input",
+      "property": "placeholder",
+      "valueKey": "portalControlAddWorkspacePlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-form label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "portalControlLogoUrl",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-logo-input",
+      "property": "placeholder",
+      "valueKey": "portalControlLogoUrlPlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-form label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "portalControlInitialStatus",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-status-input option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalControlStatusActive",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-status-input option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalControlStatusCompleted",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-status-input option:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalControlStatusArchived",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#workspace-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "portalControlCreateWorkspace",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-nav .tab-btn:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalNavOverview",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-nav .tab-btn:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalNavFiles",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-nav .tab-btn:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalNavDeliverables",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-nav .tab-btn:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "portalNavMessages",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-nav .tab-btn:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "portalNavGovernance",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-sidebar .sidebar-block:nth-of-type(3) .eyebrow",
+      "property": "textContent",
+      "valueKey": "portalBillingEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-sidebar .sidebar-block:nth-of-type(3) p:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalBillingBody",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-sidebar .sidebar-block:nth-of-type(3) .pill",
+      "property": "textContent",
+      "valueKey": "portalBillingPill",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#overview-title",
+      "property": "textContent",
+      "valueKey": "portalOverviewTitle",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#portfolio-view-btn",
+      "property": "textContent",
+      "valueKey": "portalOverviewBackPortfolio",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".workspace-identity-label",
+      "property": "textContent",
+      "valueKey": "portalOverviewIdentityLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".operator-controls label:nth-of-type(1)",
+      "property": "firstTextNode",
+      "valueKey": "portalOverviewSearchLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#client-search",
+      "property": "placeholder",
+      "valueKey": "portalOverviewSearchPlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".operator-controls label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "portalOverviewFilterLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-filter option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalOverviewFilterAll",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-filter option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalOverviewFilterActive",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-filter option:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalOverviewFilterCompleted",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-filter option:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "portalOverviewFilterArchived",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".operator-controls label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "portalOverviewTrendLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#kpi-window option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalOverviewTrend7",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#kpi-window option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalOverviewTrend30",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#kpi-window option:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalOverviewTrend90",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".operator-kpis article:nth-of-type(1) .label",
+      "property": "textContent",
+      "valueKey": "portalOverviewKpiActive",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".operator-kpis article:nth-of-type(2) .label",
+      "property": "textContent",
+      "valueKey": "portalOverviewKpiCompleted",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".operator-kpis article:nth-of-type(3) .label",
+      "property": "textContent",
+      "valueKey": "portalOverviewKpiArchived",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#active-group h4",
+      "property": "textContent",
+      "valueKey": "portalOverviewGroupActive",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#completed-group h4",
+      "property": "textContent",
+      "valueKey": "portalOverviewGroupCompleted",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#archived-group h4",
+      "property": "textContent",
+      "valueKey": "portalOverviewGroupArchived",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(1) span",
+      "property": "textContent",
+      "valueKey": "portalStatusLabel1",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(1) strong",
+      "property": "textContent",
+      "valueKey": "portalStatusValue1",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(2) span",
+      "property": "textContent",
+      "valueKey": "portalStatusLabel2",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(2) strong",
+      "property": "textContent",
+      "valueKey": "portalStatusValue2",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(3) span",
+      "property": "textContent",
+      "valueKey": "portalStatusLabel3",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(3) strong",
+      "property": "textContent",
+      "valueKey": "portalStatusValue3",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(4) span",
+      "property": "textContent",
+      "valueKey": "portalStatusLabel4",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(4) strong",
+      "property": "textContent",
+      "valueKey": "portalStatusValue4",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(5) span",
+      "property": "textContent",
+      "valueKey": "portalStatusLabel5",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#status-strip article:nth-of-type(5) strong",
+      "property": "textContent",
+      "valueKey": "portalStatusValue5",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".overview-grid article:nth-of-type(1) .label",
+      "property": "textContent",
+      "valueKey": "portalOverviewNextActionLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#next-action",
+      "property": "textContent",
+      "valueKey": "portalOverviewNextActionValue",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".overview-grid article:nth-of-type(2) .label",
+      "property": "textContent",
+      "valueKey": "portalOverviewLatestLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#latest-deliverable",
+      "property": "textContent",
+      "valueKey": "portalOverviewLatestValue",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".overview-grid article:nth-of-type(3) .label",
+      "property": "textContent",
+      "valueKey": "portalOverviewUnreadLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#unread-count",
+      "property": "textContent",
+      "valueKey": "portalOverviewUnreadValue",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".notification-card h4",
+      "property": "textContent",
+      "valueKey": "portalOverviewNotificationsHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files .panel-head h3",
+      "property": "textContent",
+      "valueKey": "portalFilesHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files .panel-head p",
+      "property": "textContent",
+      "valueKey": "portalFilesIntro",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form label:nth-of-type(1)",
+      "property": "firstTextNode",
+      "valueKey": "portalFilesLabelName",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "portalFilesLabelType",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form select[name='fileType'] option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalFilesTypeDocument",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form select[name='fileType'] option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalFilesTypeSpreadsheet",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form select[name='fileType'] option:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalFilesTypeVideo",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "portalFilesLabelNotes",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form input[name='fileNotes']",
+      "property": "placeholder",
+      "valueKey": "portalFilesNotesPlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#upload-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "portalFilesButton",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files th:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalFilesTableName",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files th:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalFilesTableType",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files th:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalFilesTableNotes",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files th:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "portalFilesTableBy",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-files th:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "portalFilesTableTime",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-deliverables .panel-head h3",
+      "property": "textContent",
+      "valueKey": "portalDeliverablesHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-deliverables .panel-head p",
+      "property": "textContent",
+      "valueKey": "portalDeliverablesIntro",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#deliverable-form label:nth-of-type(1)",
+      "property": "firstTextNode",
+      "valueKey": "portalDeliverablesLabelTitle",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#deliverable-form label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "portalDeliverablesLabelVersion",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#deliverable-form input[name='deliverableVersion']",
+      "property": "placeholder",
+      "valueKey": "portalDeliverablesVersionPlaceholder",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#deliverable-form label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "portalDeliverablesLabelSummary",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#deliverable-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "portalDeliverablesButton",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-messages .panel-head h3",
+      "property": "textContent",
+      "valueKey": "portalMessagesHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-messages .panel-head p",
+      "property": "textContent",
+      "valueKey": "portalMessagesIntro",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#message-form label",
+      "property": "firstTextNode",
+      "valueKey": "portalMessagesLabel",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#message-form button[type='submit']",
+      "property": "textContent",
+      "valueKey": "portalMessagesButton",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .panel-head h3",
+      "property": "textContent",
+      "valueKey": "portalGovernanceHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .panel-head p",
+      "property": "textContent",
+      "valueKey": "portalGovernanceIntro",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .governance-grid article:nth-of-type(1) h4",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#phase-select option:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseIntake",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#phase-select option:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseQualification",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#phase-select option:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseEvidence",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#phase-select option:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseDesign",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#phase-select option:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseDelivery",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#phase-select option:nth-of-type(6)",
+      "property": "textContent",
+      "valueKey": "portalGovernancePhaseMonitoring",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .governance-grid article:nth-of-type(2) h4",
+      "property": "textContent",
+      "valueKey": "portalGovernancePermissionsHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .governance-grid article:nth-of-type(2) li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "portalGovernanceClientPermission",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .governance-grid article:nth-of-type(2) li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "portalGovernanceOperatorPermission",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .governance-grid article:nth-of-type(3) h4",
+      "property": "textContent",
+      "valueKey": "portalGovernanceSecurityHeading",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance .governance-grid article:nth-of-type(3) p",
+      "property": "textContent",
+      "valueKey": "portalGovernanceSecurityBody",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": "#panel-governance > h4",
+      "property": "textContent",
+      "valueKey": "portalGovernanceActivityHeading",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": "title",
+      "property": "textContent",
+      "valueKey": "privacyTitle",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page .eyebrow",
+      "property": "textContent",
+      "valueKey": "privacyEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page h1",
+      "property": "textContent",
+      "valueKey": "privacyHeading",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page > p:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "privacyIntro",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page h2:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "privacyScopeHeading",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page > p:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "privacyScopeBody",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page h2:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "privacyCoverageHeading",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "privacyCoverageItem1",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "privacyCoverageItem2",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "privacyCoverageItem3",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page li:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "privacyCoverageItem4",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page li:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "privacyCoverageItem5",
+      "mode": "first"
+    },
+    {
+      "page": "privacy.html",
+      "selector": ".legal-page a.btn",
+      "property": "textContent",
+      "valueKey": "privacyReturnHome",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": "title",
+      "property": "textContent",
+      "valueKey": "termsTitle",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page .eyebrow",
+      "property": "textContent",
+      "valueKey": "termsEyebrow",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page h1",
+      "property": "textContent",
+      "valueKey": "termsHeading",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page > p:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "termsIntro",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page h2",
+      "property": "textContent",
+      "valueKey": "termsCoverageHeading",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page li:nth-of-type(1)",
+      "property": "textContent",
+      "valueKey": "termsCoverageItem1",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page li:nth-of-type(2)",
+      "property": "textContent",
+      "valueKey": "termsCoverageItem2",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page li:nth-of-type(3)",
+      "property": "textContent",
+      "valueKey": "termsCoverageItem3",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page li:nth-of-type(4)",
+      "property": "textContent",
+      "valueKey": "termsCoverageItem4",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page li:nth-of-type(5)",
+      "property": "textContent",
+      "valueKey": "termsCoverageItem5",
+      "mode": "first"
+    },
+    {
+      "page": "terms.html",
+      "selector": ".legal-page a.btn",
+      "property": "textContent",
+      "valueKey": "termsReturnHome",
+      "mode": "first"
+    }
   ]
 }
