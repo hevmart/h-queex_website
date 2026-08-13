@@ -6,6 +6,10 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const intakeForm = document.getElementById('intake-form');
 const updateForm = document.getElementById('update-form');
 
+// H-Queex Hub's public lead-intake API. See docs/website-contact-form.html in
+// the H-Queex_Hub repo for the endpoint contract (honeypot, CORS, rate limit).
+const HQ_LEADS_API_URL = 'https://hub.h-queex.com/api/leads';
+
 function getContentValue(key) {
   const values = window.__HQ_CONTENT_VALUES__ || {};
   return values[key];
@@ -172,13 +176,64 @@ if (intakeForm) {
     event.preventDefault();
 
     const success = document.getElementById('form-success');
+    const submitButton = intakeForm.querySelector('button[type="submit"]');
+
+    const serviceInterest = Array.from(
+      intakeForm.querySelectorAll('input[name="service_interest"]:checked')
+    ).map((checkbox) => checkbox.value);
+
+    const payload = {
+      company_name: (intakeForm.company_name.value || '').trim(),
+      contact_name: (intakeForm.contact_name.value || '').trim(),
+      email: (intakeForm.email.value || '').trim(),
+      phone: (intakeForm.phone.value || '').trim(),
+      message: (intakeForm.message.value || '').trim(),
+      service_interest: serviceInterest,
+      website_url: intakeForm.website_url.value, // honeypot — must stay empty
+    };
+
     if (success) {
-      success.textContent =
-        getContentValue('homeIntakeSuccessMessage') ||
-        'Intake captured in prototype mode. Live routing integration is currently pending.';
+      success.textContent = 'Sending...';
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
     }
 
-    intakeForm.reset();
+    fetch(HQ_LEADS_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((response) =>
+        response.json().then((data) => ({ ok: response.ok, data }))
+      )
+      .then((result) => {
+        if (success) {
+          if (result.ok && result.data.success) {
+            success.textContent =
+              getContentValue('homeIntakeSuccessMessage') ||
+              'Enquiry received and routed to the H-Queex team.';
+            intakeForm.reset();
+          } else {
+            success.textContent =
+              result.data.error ||
+              getContentValue('homeIntakeErrorMessage') ||
+              'Submission failed. Retry, or contact H-Queex directly.';
+          }
+        }
+      })
+      .catch(() => {
+        if (success) {
+          success.textContent =
+            getContentValue('homeIntakeErrorMessage') ||
+            'Submission failed. Retry, or contact H-Queex directly.';
+        }
+      })
+      .finally(() => {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      });
   });
 }
 
@@ -187,12 +242,60 @@ if (updateForm) {
     event.preventDefault();
 
     const success = document.getElementById('update-success');
+    const submitButton = updateForm.querySelector('button[type="submit"]');
+    const email = (updateForm.email.value || '').trim();
+
+    const payload = {
+      // No name field on this form — email doubles as contact_name so the
+      // Hub's "contact_name or company_name required" check is satisfied.
+      contact_name: email,
+      email,
+      message: 'Requested the Clarity methodology overview and operational updates.',
+      service_interest: [],
+      source: 'Website — Update Request',
+    };
+
     if (success) {
-      success.textContent =
-        getContentValue('homeUpdateSuccessMessage') ||
-        'Request recorded in prototype mode. Update workflow integration is currently pending.';
+      success.textContent = 'Sending...';
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
     }
 
-    updateForm.reset();
+    fetch(HQ_LEADS_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((response) =>
+        response.json().then((data) => ({ ok: response.ok, data }))
+      )
+      .then((result) => {
+        if (success) {
+          if (result.ok && result.data.success) {
+            success.textContent =
+              getContentValue('homeUpdateSuccessMessage') ||
+              'Request recorded. You will receive updates from H-Queex.';
+            updateForm.reset();
+          } else {
+            success.textContent =
+              result.data.error ||
+              getContentValue('homeUpdateErrorMessage') ||
+              'Request failed. Retry, or contact H-Queex directly.';
+          }
+        }
+      })
+      .catch(() => {
+        if (success) {
+          success.textContent =
+            getContentValue('homeUpdateErrorMessage') ||
+            'Request failed. Retry, or contact H-Queex directly.';
+        }
+      })
+      .finally(() => {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      });
   });
 }
