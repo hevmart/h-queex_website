@@ -1346,26 +1346,63 @@
   }
 
   function publishToGitHub() {
-    setStatus("Publishing to GitHub...");
+    setStatus("Saving then publishing to GitHub...");
 
-    fetch("/api/publish", {
+    const payload = Object.assign({}, state.valuesByKey);
+    let conflicted = false;
+
+    // Always save first so content-model.json (and whatever the user just
+    // typed) is up to date before the git commit - matches the replica
+    // editor's publish flow, so Publish can never silently push stale
+    // content just because Save Changes wasn't clicked first.
+    fetch("/api/save-content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({})
+      body: JSON.stringify({ values: payload, _version: state.version })
     })
       .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Unable to publish to GitHub.");
+        return response.json().then(function (data) {
+          return { status: response.status, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.status === 409) {
+          conflicted = true;
+          handleSaveConflict(payload);
+          return null;
         }
+        if (result.status !== 200 || !result.data || result.data.ok !== true) {
+          throw new Error((result.data && result.data.error) || "Save before publish failed.");
+        }
+
+        if (typeof result.data._version === "number") {
+          state.version = result.data._version;
+        }
+        state.dirtyKeys.clear();
+        localStorage.removeItem(STORAGE_KEY);
+        return fetch("/api/publish", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({})
+        });
+      })
+      .then(function (response) {
+        if (conflicted || response === null) {
+          return null;
+        }
+        if (!response.ok) throw new Error("Unable to publish to GitHub.");
         return response.json();
       })
       .then(function (result) {
+        if (conflicted || result === null) {
+          return;
+        }
         const message = result && result.message ? result.message : "Published to GitHub.";
         setStatus(message, result && result.published ? "success" : undefined);
       })
       .catch(function (error) {
         console.error(error);
-        setStatus("Publish failed. Check the local Git setup and remote connection.", "error");
+        setStatus("Publish failed: " + error.message, "error");
       });
   }
 
