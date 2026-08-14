@@ -406,46 +406,52 @@
               Intake submission is an enquiry step and does not create a service agreement.
             </p>
           </div>
-          <form class="intake-form" id="intake-form">
+          <form class="intake-form" id="intake-form" novalidate>
             <label>
               Company Name
-              <input type="text" name="company" required />
+              <input type="text" name="company_name" required />
             </label>
             <label>
               Contact Name
-              <input type="text" name="contact" required />
+              <input type="text" name="contact_name" required />
             </label>
             <label>
-              Sector
-              <input type="text" name="sector" required />
+              Email Address
+              <input type="email" name="email" required />
             </label>
             <label>
-              Company Size
-              <select name="size" required>
-                <option value="" selected disabled>Select range</option>
-                <option>1 to 10</option>
-                <option>11 to 50</option>
-                <option>51 to 100</option>
-                <option>101 to 250</option>
-                <option>250 plus</option>
-              </select>
+              Phone Number
+              <input type="tel" name="phone" />
             </label>
             <label class="full">
               Operational Challenge Summary
-              <textarea name="challenge" rows="4" required></textarea>
+              <textarea name="message" rows="4" required></textarea>
             </label>
-            <label class="full">
-              Supporting Files (optional)
-              <input
-                type="file"
-                name="files"
-                multiple
-                accept=".pdf,.doc,.docx,.xls,.xlsx,.mp4,.mov,.m4v"
-              />
-            </label>
+            <fieldset class="full service-interest">
+              <legend>Service Interest (optional)</legend>
+              <label class="checkbox-option">
+                <input type="checkbox" name="service_interest" value="Clarity Base" />
+                Clarity Base
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="service_interest" value="Clarity Plus" />
+                Clarity Plus
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="service_interest" value="Clarity Partner" />
+                Clarity Partner
+              </label>
+            </fieldset>
+            <!-- Honeypot — must stay hidden and unlabelled to real visitors. A bot that
+                 fills every field trips it; the API silently no-ops instead of erroring,
+                 so never remove the CSS hiding it or give it a visible label. -->
+            <div class="full" style="position: absolute; left: -9999px; top: -9999px" aria-hidden="true">
+              <label for="intake-website-url">Leave this field blank</label>
+              <input id="intake-website-url" name="website_url" type="text" tabindex="-1" autocomplete="off" />
+            </div>
             <button class="btn btn-primary full" type="submit">Submit Intake</button>
             <p class="form-note full">
-              Form is currently in prototype mode and does not transmit data.
+              Form submissions route directly to the H-Queex team.
             </p>
             <p class="form-success full" id="form-success" aria-live="polite"></p>
           </form>

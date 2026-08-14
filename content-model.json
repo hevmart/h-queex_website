@@ -127,19 +127,17 @@
     "homeIntakeNoteAgreement": "Intake submission is an enquiry step and does not create a service agreement.",
     "homeIntakeLabelCompany": "Company Name",
     "homeIntakeLabelContact": "Contact Name",
-    "homeIntakeLabelSector": "Sector",
-    "homeIntakeLabelSize": "Company Size",
-    "homeIntakeSizePlaceholder": "Select range",
-    "homeIntakeSize1": "1 to 10",
-    "homeIntakeSize2": "11 to 50",
-    "homeIntakeSize3": "51 to 100",
-    "homeIntakeSize4": "101 to 250",
-    "homeIntakeSize5": "250 plus",
+    "homeIntakeLabelEmail": "Email Address",
+    "homeIntakeLabelPhone": "Phone Number",
     "homeIntakeLabelChallenge": "Operational Challenge Summary",
-    "homeIntakeLabelFiles": "Supporting Files (optional)",
+    "homeIntakeLabelServiceInterest": "Service Interest (optional)",
+    "homeIntakeServiceOption1": "Clarity Base",
+    "homeIntakeServiceOption2": "Clarity Plus",
+    "homeIntakeServiceOption3": "Clarity Partner",
     "homeIntakeButton": "Submit Intake",
-    "homeIntakeFormNote": "Form is currently in prototype mode and does not transmit data.",
-    "homeIntakeSuccessMessage": "Intake captured in prototype mode. Live routing integration is currently pending.",
+    "homeIntakeFormNote": "Form submissions route directly to the H-Queex team.",
+    "homeIntakeSuccessMessage": "Enquiry received and routed to the H-Queex team.",
+    "homeIntakeErrorMessage": "Submission failed. Retry, or contact H-Queex directly.",
     "homeSecondaryEyebrow": "Secondary Conversion Path",
     "homeSecondaryHeading": "Methodology brief",
     "homeSecondaryIntro": "Visitors not ready to begin intake can request the Clarity methodology overview.",
@@ -1256,86 +1254,65 @@
     },
     {
       "page": "index.html",
-      "selector": "#intake-form label:nth-of-type(1)",
+      "selector": "#intake-form > label:nth-of-type(1)",
       "property": "firstTextNode",
       "valueKey": "homeIntakeLabelCompany",
       "mode": "first"
     },
     {
       "page": "index.html",
-      "selector": "#intake-form label:nth-of-type(2)",
+      "selector": "#intake-form > label:nth-of-type(2)",
       "property": "firstTextNode",
       "valueKey": "homeIntakeLabelContact",
       "mode": "first"
     },
     {
       "page": "index.html",
-      "selector": "#intake-form label:nth-of-type(3)",
+      "selector": "#intake-form > label:nth-of-type(3)",
       "property": "firstTextNode",
-      "valueKey": "homeIntakeLabelSector",
+      "valueKey": "homeIntakeLabelEmail",
       "mode": "first"
     },
     {
       "page": "index.html",
-      "selector": "#intake-form label:nth-of-type(4)",
+      "selector": "#intake-form > label:nth-of-type(4)",
       "property": "firstTextNode",
-      "valueKey": "homeIntakeLabelSize",
+      "valueKey": "homeIntakeLabelPhone",
       "mode": "first"
     },
     {
       "page": "index.html",
-      "selector": "#intake-form select[name='size'] option:nth-of-type(1)",
-      "property": "textContent",
-      "valueKey": "homeIntakeSizePlaceholder",
-      "mode": "first"
-    },
-    {
-      "page": "index.html",
-      "selector": "#intake-form select[name='size'] option:nth-of-type(2)",
-      "property": "textContent",
-      "valueKey": "homeIntakeSize1",
-      "mode": "first"
-    },
-    {
-      "page": "index.html",
-      "selector": "#intake-form select[name='size'] option:nth-of-type(3)",
-      "property": "textContent",
-      "valueKey": "homeIntakeSize2",
-      "mode": "first"
-    },
-    {
-      "page": "index.html",
-      "selector": "#intake-form select[name='size'] option:nth-of-type(4)",
-      "property": "textContent",
-      "valueKey": "homeIntakeSize3",
-      "mode": "first"
-    },
-    {
-      "page": "index.html",
-      "selector": "#intake-form select[name='size'] option:nth-of-type(5)",
-      "property": "textContent",
-      "valueKey": "homeIntakeSize4",
-      "mode": "first"
-    },
-    {
-      "page": "index.html",
-      "selector": "#intake-form select[name='size'] option:nth-of-type(6)",
-      "property": "textContent",
-      "valueKey": "homeIntakeSize5",
-      "mode": "first"
-    },
-    {
-      "page": "index.html",
-      "selector": "#intake-form label:nth-of-type(5)",
+      "selector": "#intake-form > label:nth-of-type(5)",
       "property": "firstTextNode",
       "valueKey": "homeIntakeLabelChallenge",
       "mode": "first"
     },
     {
       "page": "index.html",
-      "selector": "#intake-form label:nth-of-type(6)",
+      "selector": "#intake-form fieldset.service-interest legend",
+      "property": "textContent",
+      "valueKey": "homeIntakeLabelServiceInterest",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form fieldset.service-interest label:nth-of-type(1)",
       "property": "firstTextNode",
-      "valueKey": "homeIntakeLabelFiles",
+      "valueKey": "homeIntakeServiceOption1",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form fieldset.service-interest label:nth-of-type(2)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeServiceOption2",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": "#intake-form fieldset.service-interest label:nth-of-type(3)",
+      "property": "firstTextNode",
+      "valueKey": "homeIntakeServiceOption3",
       "mode": "first"
     },
     {
