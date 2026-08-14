@@ -352,7 +352,6 @@ a {
 
 .ticker-track {
   display: flex;
-  gap: 1.9rem;
   min-width: max-content;
   padding: 0.9rem 0;
   animation: tickerMove 28s linear infinite;
@@ -364,6 +363,7 @@ a {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  margin-right: 1.9rem;
 }
 
 .section {
