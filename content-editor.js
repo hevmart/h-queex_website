@@ -29,6 +29,8 @@
     fieldSpecs: [],
     groupedSpecs: {},
     valuesByKey: {},
+    version: 0,
+    dirtyKeys: new Set(),
     activeGroupId: null
   };
 
@@ -408,6 +410,7 @@
     const overrides = readOverrides();
 
     state.baseModel = model;
+    state.version = typeof (model && model._version) === "number" ? model._version : 0;
     state.fieldSpecs = getFieldSpecs(model);
     state.groupedSpecs = {};
     state.valuesByKey = {};
@@ -485,6 +488,7 @@
     input.dataset.key = spec.key;
     input.addEventListener("input", function () {
       state.valuesByKey[spec.key] = input.value;
+      state.dirtyKeys.add(spec.key);
     });
 
     row.appendChild(label);
@@ -1237,21 +1241,86 @@
     }
   }
 
+  function setReloadButtonVisible(visible) {
+    const reloadBtn = document.getElementById("reload-btn");
+    if (reloadBtn) {
+      reloadBtn.hidden = !visible;
+    }
+  }
+
+  function handleSaveConflict(payload) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    setReloadButtonVisible(true);
+    setStatus(
+      "This content has changed elsewhere since you opened this page. Your edits here have not been saved. " +
+        'Click "Reload Latest" to bring in the newest content without losing what you typed, then try saving again.',
+      "error"
+    );
+  }
+
+  function reloadLatestContent() {
+    setStatus("Reloading latest content...");
+
+    fetch("content-model.json", { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to reload content model");
+        }
+        return response.json();
+      })
+      .then(function (model) {
+        const freshValues = (model && model.values) || {};
+        state.baseModel = model;
+        state.version = typeof model._version === "number" ? model._version : 0;
+
+        // Keep whatever the user actually typed this session (dirtyKeys);
+        // take the fresh server value for every other field. That way a
+        // conflict never requires retyping edits that are still valid.
+        state.fieldSpecs.forEach(function (spec) {
+          if (!state.dirtyKeys.has(spec.key)) {
+            state.valuesByKey[spec.key] = typeof freshValues[spec.key] === "string" ? freshValues[spec.key] : "";
+          }
+        });
+
+        renderActiveSection();
+        setReloadButtonVisible(false);
+        setStatus(
+          "Reloaded latest content. Your unsaved edits on this page were kept — click Save Changes to try again.",
+          "success"
+        );
+      })
+      .catch(function (error) {
+        console.error(error);
+        setStatus("Could not reload latest content. Try refreshing the page.", "error");
+      });
+  }
+
   function saveOverrides() {
     const payload = Object.assign({}, state.valuesByKey);
 
     fetch("/api/save-content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ values: payload })
+      body: JSON.stringify({ values: payload, _version: state.version })
     })
       .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Unable to save content to the project file.");
-        }
-        return response.json();
+        return response.json().then(function (data) {
+          return { status: response.status, data: data };
+        });
       })
-      .then(function () {
+      .then(function (result) {
+        if (result.status === 409) {
+          handleSaveConflict(payload);
+          return;
+        }
+        if (result.status !== 200 || !result.data || result.data.ok !== true) {
+          throw new Error((result.data && result.data.error) || "Unable to save content to the project file.");
+        }
+
+        if (typeof result.data._version === "number") {
+          state.version = result.data._version;
+        }
+        state.dirtyKeys.clear();
         localStorage.removeItem(STORAGE_KEY);
         setStatus("Saved to the project content file. Refresh homepage or portal tabs to see updates.", "success");
       })
@@ -1264,6 +1333,8 @@
 
   function resetToDefaults() {
     localStorage.removeItem(STORAGE_KEY);
+    state.dirtyKeys.clear();
+    setReloadButtonVisible(false);
 
     const defaults = (state.baseModel && state.baseModel.values) || {};
     state.fieldSpecs.forEach(function (spec) {
@@ -1312,6 +1383,11 @@
     const resetBtn = document.getElementById("reset-btn");
     if (resetBtn) {
       resetBtn.addEventListener("click", resetToDefaults);
+    }
+
+    const reloadBtn = document.getElementById("reload-btn");
+    if (reloadBtn) {
+      reloadBtn.addEventListener("click", reloadLatestContent);
     }
 
     const search = document.getElementById("editor-search");

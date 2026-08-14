@@ -41,10 +41,16 @@ class NoCacheRequestHandler(SimpleHTTPRequestHandler):
                 if not isinstance(values, dict):
                     raise ValueError("Expected a JSON object with a values property.")
 
+                client_version = payload.get("_version")
+                if not isinstance(client_version, int):
+                    raise ValueError(
+                        "Expected an integer _version field matching the version this save was loaded from."
+                    )
+
                 content_model_path = project_root / "content-model.json"
 
                 if not content_model_path.exists():
-                    content_model_path.write_text('{\n  "values": {}\n}\n', encoding="utf-8")
+                    content_model_path.write_text('{\n  "_version": 0,\n  "values": {}\n}\n', encoding="utf-8")
 
                 with content_model_path.open("r", encoding="utf-8") as handle:
                     content_model = json.load(handle)
@@ -52,12 +58,37 @@ class NoCacheRequestHandler(SimpleHTTPRequestHandler):
                 if not isinstance(content_model, dict):
                     content_model = {}
 
+                current_version = content_model.get("_version")
+                if not isinstance(current_version, int):
+                    current_version = 0
+
+                # Optimistic concurrency check: reject a save based on a stale
+                # load instead of silently overwriting whatever changed on disk
+                # since this client's tab last fetched content-model.json.
+                if client_version != current_version:
+                    self.send_response(409)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(
+                        json.dumps(
+                            {
+                                "ok": False,
+                                "error": "Content has changed on disk since this was loaded.",
+                                "_version": current_version,
+                                "values": content_model.get("values", {}),
+                            }
+                        ).encode("utf-8")
+                    )
+                    return
+
                 existing_values = content_model.get("values")
                 if not isinstance(existing_values, dict):
                     existing_values = {}
 
                 existing_values.update(values)
                 content_model["values"] = existing_values
+                new_version = current_version + 1
+                content_model["_version"] = new_version
 
                 with content_model_path.open("w", encoding="utf-8") as handle:
                     json.dump(content_model, handle, indent=2)
@@ -66,7 +97,9 @@ class NoCacheRequestHandler(SimpleHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
                 self.end_headers()
-                self.wfile.write(json.dumps({"ok": True, "saved": len(values)}).encode("utf-8"))
+                self.wfile.write(
+                    json.dumps({"ok": True, "saved": len(values), "_version": new_version}).encode("utf-8")
+                )
             except Exception as exc:  # pragma: no cover - defensive server error handling
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")

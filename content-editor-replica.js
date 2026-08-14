@@ -5,6 +5,8 @@
   const state = {
     model: null,
     values: {},
+    version: 0,
+    dirtyKeys: new Set(),
     pageKeys: new Set(),
     descriptorsByKey: new Map(),
     sectionAnchors: [],
@@ -306,6 +308,7 @@
     element.addEventListener("input", function () {
       const value = normalizeText(element.textContent);
       state.values[key] = value;
+      state.dirtyKeys.add(key);
 
       const descriptor = state.descriptorsByKey.get(key);
       if (descriptor) {
@@ -401,21 +404,100 @@
     });
   }
 
+  function setReloadButtonVisible(visible) {
+    const reloadBtn = document.getElementById("replica-reload-btn");
+    if (reloadBtn) {
+      reloadBtn.hidden = !visible;
+    }
+  }
+
+  function handleSaveConflict() {
+    const overrides = readOverrides();
+    state.pageKeys.forEach(function (key) {
+      if (typeof state.values[key] === "string") {
+        overrides[key] = state.values[key];
+      }
+    });
+    writeOverrides(overrides);
+
+    setReloadButtonVisible(true);
+    setStatus(
+      "This content has changed elsewhere since you opened this page. Your edits here have not been saved. " +
+        'Click "Reload Latest" to bring in the newest content without losing what you typed, then try saving again.',
+      "error"
+    );
+  }
+
+  function reloadLatestContent() {
+    setStatus("Reloading latest content...");
+
+    fetch("content-model.json", { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to reload content model");
+        }
+        return response.json();
+      })
+      .then(function (model) {
+        const freshValues = (model && model.values) || {};
+        state.model = model;
+        state.version = typeof model._version === "number" ? model._version : 0;
+
+        // Keep whatever the user actually typed this session (dirtyKeys);
+        // take the fresh server value for every other field. That way a
+        // conflict never requires retyping edits that are still valid.
+        state.pageKeys.forEach(function (key) {
+          if (!state.dirtyKeys.has(key)) {
+            state.values[key] = typeof freshValues[key] === "string" ? freshValues[key] : "";
+          }
+        });
+
+        state.descriptorsByKey.forEach(function (descriptor, key) {
+          const value = state.values[key] || "";
+          descriptor.elements.forEach(function (element) {
+            element.textContent = value;
+            setEditableVisualState(element);
+          });
+        });
+
+        setReloadButtonVisible(false);
+        setStatus(
+          "Reloaded latest content. Your unsaved edits on this page were kept — click Save to try again.",
+          "success"
+        );
+      })
+      .catch(function (error) {
+        console.error(error);
+        setStatus("Could not reload latest content. Try refreshing the page.", "error");
+      });
+  }
+
   function saveHomeOverrides() {
     const payload = Object.assign({}, state.values);
 
     fetch("/api/save-content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ values: payload })
+      body: JSON.stringify({ values: payload, _version: state.version })
     })
       .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Unable to save replica content to the project file.");
-        }
-        return response.json();
+        return response.json().then(function (data) {
+          return { status: response.status, data: data };
+        });
       })
-      .then(function () {
+      .then(function (result) {
+        if (result.status === 409) {
+          handleSaveConflict();
+          return;
+        }
+        if (result.status !== 200 || !result.data || result.data.ok !== true) {
+          throw new Error((result.data && result.data.error) || "Unable to save replica content to the project file.");
+        }
+
+        if (typeof result.data._version === "number") {
+          state.version = result.data._version;
+        }
+        state.dirtyKeys.clear();
         writeOverrides({});
         state.isDirty = false;
         setStatus("Saved replica edits to the project content file.", "success");
@@ -449,6 +531,8 @@
     });
 
     state.isDirty = false;
+    state.dirtyKeys.clear();
+    setReloadButtonVisible(false);
     setStatus("Canceled unsaved changes and restored the last saved replica state.");
   }
 
@@ -456,18 +540,33 @@
     setStatus("Saving then publishing to GitHub...");
 
     const payload = Object.assign({}, state.values);
+    let conflicted = false;
 
     // Always save first so content-model.json is up to date before the git commit.
     fetch("/api/save-content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ values: payload })
+      body: JSON.stringify({ values: payload, _version: state.version })
     })
       .then(function (response) {
-        if (!response.ok) throw new Error("Save before publish failed.");
-        return response.json();
+        return response.json().then(function (data) {
+          return { status: response.status, data: data };
+        });
       })
-      .then(function () {
+      .then(function (result) {
+        if (result.status === 409) {
+          conflicted = true;
+          handleSaveConflict();
+          return null;
+        }
+        if (result.status !== 200 || !result.data || result.data.ok !== true) {
+          throw new Error((result.data && result.data.error) || "Save before publish failed.");
+        }
+
+        if (typeof result.data._version === "number") {
+          state.version = result.data._version;
+        }
+        state.dirtyKeys.clear();
         writeOverrides({});
         state.isDirty = false;
         return fetch("/api/publish", {
@@ -477,10 +576,16 @@
         });
       })
       .then(function (response) {
+        if (conflicted || response === null) {
+          return null;
+        }
         if (!response.ok) throw new Error("Unable to publish to GitHub.");
         return response.json();
       })
       .then(function (result) {
+        if (conflicted || result === null) {
+          return;
+        }
         const message = result && result.message ? result.message : "Published to GitHub.";
         setStatus(message, result && result.published ? "success" : undefined);
       })
@@ -504,6 +609,11 @@
     const cancelBtn = document.getElementById("replica-cancel-btn");
     if (cancelBtn) {
       cancelBtn.addEventListener("click", cancelReplicaEdits);
+    }
+
+    const reloadBtn = document.getElementById("replica-reload-btn");
+    if (reloadBtn) {
+      reloadBtn.addEventListener("click", reloadLatestContent);
     }
   }
 
@@ -580,6 +690,7 @@
         const portalHtml = results[2];
 
         state.model = model;
+        state.version = typeof model._version === "number" ? model._version : 0;
         state.values = Object.assign({}, model.values || {}, readOverrides());
 
         const canvas = mountReplica(homepageHtml);
