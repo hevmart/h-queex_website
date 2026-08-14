@@ -611,7 +611,11 @@
         "homeTickerItem5",
         "homeTickerItem6",
         "homeTickerItem7",
-        "homeTickerItem8"
+        "homeTickerItem8",
+        "homeTickerItem9",
+        "homeTickerItem10",
+        "homeTickerItem11",
+        "homeTickerItem12"
       ]
     });
   }

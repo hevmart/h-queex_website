@@ -35,8 +35,12 @@
     "homeTickerItem4": "Portal-Based Information Exchange",
     "homeTickerItem5": "Lean Six Sigma-Informed Design",
     "homeTickerItem6": "Structured Delivery",
-    "homeTickerItem7": "Documented Operating Systems",
-    "homeTickerItem8": "Asynchronous Delivery",
+    "homeTickerItem7": "Professional Accountability",
+    "homeTickerItem8": "Documented Operating Systems",
+    "homeTickerItem9": "Asynchronous Delivery",
+    "homeTickerItem10": "Portal-Based Information Exchange",
+    "homeTickerItem11": "Lean Six Sigma-Informed Design",
+    "homeTickerItem12": "Structured Delivery",
     "homeAboutEyebrow": "About H-Queex",
     "homeAboutHeading": "Built for documented, repeatable operations",
     "homeAboutCard1Title": "Who H-Queex serves",
@@ -636,6 +640,34 @@
       "selector": ".ticker-track span:nth-of-type(8)",
       "property": "textContent",
       "valueKey": "homeTickerItem8",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(9)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem9",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(10)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem10",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(11)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem11",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".ticker-track span:nth-of-type(12)",
+      "property": "textContent",
+      "valueKey": "homeTickerItem12",
       "mode": "first"
     },
     {
