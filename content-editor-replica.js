@@ -9,12 +9,86 @@
     dirtyKeys: new Set(),
     pageKeys: new Set(),
     descriptorsByKey: new Map(),
+    otherFieldElements: new Map(),
     sectionAnchors: [],
     isDirty: false
   };
 
   function isBindablePage(page) {
     return page === "index.html" || page === "portal.html";
+  }
+
+  // Groups/labels for the "Other Content Fields" panel below - values that
+  // aren't bound to any visible page text (meta tags, input placeholders,
+  // or portal runtime strings used directly in JS rather than swapped into
+  // static HTML). Ported from content-editor.js so labels stay familiar.
+  const OTHER_FIELD_GROUPS = [
+    { id: "home", title: "Home" },
+    { id: "homeAbout", title: "About" },
+    { id: "homeServices", title: "Services" },
+    { id: "homeMethod", title: "Methodology" },
+    { id: "homeWorkflow", title: "Workflow" },
+    { id: "homeFit", title: "Qualification / Fit" },
+    { id: "homeProof", title: "Proof and Maturity" },
+    { id: "homeIntake", title: "Intake" },
+    { id: "homeSecondary", title: "Secondary Conversion" },
+    { id: "homeFooter", title: "Footer" },
+    { id: "portal", title: "Portal" },
+    { id: "portalRuntime", title: "Portal Runtime" },
+    { id: "legal", title: "Legal Pages" },
+    { id: "other", title: "Other" }
+  ];
+
+  function getOtherFieldGroupId(key) {
+    if (key.startsWith("portalRuntime")) {
+      return "portalRuntime";
+    }
+    if (key.startsWith("portal")) {
+      return "portal";
+    }
+    if (key.startsWith("privacy") || key.startsWith("terms")) {
+      return "legal";
+    }
+    if (key.startsWith("homeAbout")) {
+      return "homeAbout";
+    }
+    if (key.startsWith("homeServices") || key.startsWith("homeTier")) {
+      return "homeServices";
+    }
+    if (key.startsWith("homeMethod") || key.startsWith("homeStep")) {
+      return "homeMethod";
+    }
+    if (key.startsWith("homeWorkflow")) {
+      return "homeWorkflow";
+    }
+    if (key.startsWith("homeFit")) {
+      return "homeFit";
+    }
+    if (key.startsWith("homeProof") || key.startsWith("homeRoadmap") || key.startsWith("homeFutureProof")) {
+      return "homeProof";
+    }
+    if (key.startsWith("homeIntake")) {
+      return "homeIntake";
+    }
+    if (key.startsWith("homeSecondary") || key.startsWith("homeUpdate")) {
+      return "homeSecondary";
+    }
+    if (key.startsWith("homeFooter")) {
+      return "homeFooter";
+    }
+    if (key.startsWith("home")) {
+      return "home";
+    }
+    return "other";
+  }
+
+  function toDisplayLabel(key) {
+    return key
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, function (char) {
+        return char.toUpperCase();
+      })
+      .trim();
   }
 
   const SECTION_PRESETS = [
@@ -404,6 +478,112 @@
     });
   }
 
+  function syncFieldDisplay(key) {
+    const value = state.values[key] || "";
+
+    const descriptor = state.descriptorsByKey.get(key);
+    if (descriptor) {
+      descriptor.elements.forEach(function (element) {
+        element.textContent = value;
+        setEditableVisualState(element);
+      });
+    }
+
+    const otherEl = state.otherFieldElements.get(key);
+    if (otherEl) {
+      otherEl.value = value;
+    }
+  }
+
+  function buildOtherFieldsPanel(model) {
+    const container = document.getElementById("replica-other-fields");
+    if (!container) {
+      return;
+    }
+
+    container.innerHTML = "";
+    state.otherFieldElements = new Map();
+
+    const values = (model && model.values) || {};
+    const orphanKeys = Object.keys(values).filter(function (key) {
+      return !state.descriptorsByKey.has(key);
+    });
+
+    if (!orphanKeys.length) {
+      return;
+    }
+
+    const heading = document.createElement("h2");
+    heading.className = "replica-other-fields-heading";
+    heading.textContent = "Other Content Fields";
+    container.appendChild(heading);
+
+    const hint = document.createElement("p");
+    hint.className = "replica-other-fields-hint";
+    hint.textContent =
+      "Not shown as page text above - meta tags, input placeholders, and portal runtime messages. Still part of the site's content and included in Save/Publish.";
+    container.appendChild(hint);
+
+    const byGroup = new Map();
+    orphanKeys.forEach(function (key) {
+      const groupId = getOtherFieldGroupId(key);
+      if (!byGroup.has(groupId)) {
+        byGroup.set(groupId, []);
+      }
+      byGroup.get(groupId).push(key);
+    });
+
+    OTHER_FIELD_GROUPS.forEach(function (group) {
+      const keys = byGroup.get(group.id);
+      if (!keys || !keys.length) {
+        return;
+      }
+      keys.sort();
+
+      const fieldset = document.createElement("fieldset");
+      fieldset.className = "replica-other-group";
+      const legend = document.createElement("legend");
+      legend.textContent = group.title;
+      fieldset.appendChild(legend);
+
+      keys.forEach(function (key) {
+        const field = document.createElement("div");
+        field.className = "replica-other-field";
+
+        const label = document.createElement("label");
+        label.textContent = toDisplayLabel(key);
+        label.setAttribute("for", "other-field-" + key);
+        field.appendChild(label);
+
+        const rawValue = String(values[key] || "");
+        const useTextarea =
+          rawValue.length > 90 || /Body|Description|Intro|Message|Note|Summary|Paragraph|Copy|Disclaimer/i.test(key);
+        const input = document.createElement(useTextarea ? "textarea" : "input");
+        input.id = "other-field-" + key;
+        input.value = state.values[key] || "";
+        if (useTextarea) {
+          input.rows = 3;
+        } else {
+          input.type = "text";
+        }
+
+        input.addEventListener("input", function () {
+          state.values[key] = input.value;
+          state.dirtyKeys.add(key);
+          markDirty();
+        });
+
+        field.appendChild(input);
+        fieldset.appendChild(field);
+
+        state.otherFieldElements.set(key, input);
+        state.pageKeys.add(key);
+      });
+
+      container.appendChild(fieldset);
+    });
+  }
+
   function setReloadButtonVisible(visible) {
     const reloadBtn = document.getElementById("replica-reload-btn");
     if (reloadBtn) {
@@ -450,14 +630,7 @@
           if (!state.dirtyKeys.has(key)) {
             state.values[key] = typeof freshValues[key] === "string" ? freshValues[key] : "";
           }
-        });
-
-        state.descriptorsByKey.forEach(function (descriptor, key) {
-          const value = state.values[key] || "";
-          descriptor.elements.forEach(function (element) {
-            element.textContent = value;
-            setEditableVisualState(element);
-          });
+          syncFieldDisplay(key);
         });
 
         setReloadButtonVisible(false);
@@ -520,14 +693,7 @@
 
     state.pageKeys.forEach(function (key) {
       state.values[key] = String(typeof savedValues[key] === "string" ? savedValues[key] : "");
-    });
-
-    state.descriptorsByKey.forEach(function (descriptor, key) {
-      const value = state.values[key] || "";
-      descriptor.elements.forEach(function (element) {
-        element.textContent = value;
-        setEditableVisualState(element);
-      });
+      syncFieldDisplay(key);
     });
 
     state.isDirty = false;
@@ -699,6 +865,7 @@
 
         applyValuesToReplica(canvas, model, state.values);
         buildDescriptors(canvas, model);
+        buildOtherFieldsPanel(model);
         populateSectionJump(canvas);
         wireToolbar();
 

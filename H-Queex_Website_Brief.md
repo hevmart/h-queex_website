@@ -127,9 +127,8 @@ Not yet finalised; confirm before publishing. Suggested placeholder: Clarity Bas
 
 Use this sequence for predictable content updates:
 
-1. Edit source text using the stable editor entry points: content-editor.html or content-editor-replica.html.
+1. Edit source text using the single editor entry point: content-editor-replica.html. It shows the homepage/portal as a visual replica for inline editing, plus an "Other Content Fields" panel below for values with no visible page text (meta tags, input placeholders, portal runtime strings) - together they cover every key in content-model.json. (The older content-editor.html table editor was retired 2026-08-15 once the replica editor reached full field coverage.)
 2. Save in the editor, then refresh the target page normally.
 3. If preview behaves unexpectedly, restart localhost server with scripts/start-localhost-server.ps1.
 4. Keep production-facing copy changes in content-model.json aligned with visible section intent.
 5. Preserve visual consistency by avoiding one-off "featured" styles unless intentionally approved.
-6. Use content-editor.html for portal text and portal runtime copy; use content-editor-replica.html for the homepage visual replica only.
