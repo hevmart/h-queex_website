@@ -1,4 +1,10 @@
 :root {
+  /* This site is designed light-only (no dark palette exists for any
+     section). Without this, some browsers' "force dark mode for web
+     content" auto-darkens backgrounds but leaves hardcoded dark text
+     colors (e.g. --navy) untouched, producing near-invisible dark-on-dark
+     text - this opts the whole page out of that heuristic entirely. */
+  color-scheme: light;
   --navy: #16294a;
   --gold: #b08d57;
   --bg: #f7f7f7;
