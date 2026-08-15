@@ -540,6 +540,13 @@ a {
   background: linear-gradient(180deg, rgba(22, 41, 74, 0.03), rgba(22, 41, 74, 0.01));
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  /* This section's true background is a near-white tint (see gradient
+     above), but some browsers' forced-dark heuristics still misjudge it
+     and darken it while leaving the dark navy text untouched - a second,
+     more targeted opt-out signal (color-scheme in :root wasn't enough by
+     itself) telling the browser to render this element's authored colors
+     exactly as declared, not repainted. */
+  forced-color-adjust: none;
 }
 
 .workflow-list {
