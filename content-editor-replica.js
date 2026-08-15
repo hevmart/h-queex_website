@@ -22,7 +22,23 @@
   // aren't bound to any visible page text (meta tags, input placeholders,
   // or portal runtime strings used directly in JS rather than swapped into
   // static HTML). Ported from content-editor.js so labels stay familiar.
+
+  // Link destinations (hrefs) that have their own content-model keys,
+  // separate from their (already-editable) label text. Called out into
+  // their own group rather than falling under whichever text group their
+  // key prefix would otherwise match (e.g. homeFooterPrivacyUrl would
+  // otherwise land in "Footer"), since these are functionally different
+  // from body copy - get one wrong and a link points somewhere broken.
+  const LINK_URL_LABELS = {
+    homePortalUrl: "Client Portal URL",
+    homeFooterPrivacyUrl: "Privacy Policy URL",
+    homeFooterTermsUrl: "Terms URL",
+    homeFooterLinkedInUrl: "LinkedIn URL"
+  };
+  const LINK_URL_KEYS = new Set(Object.keys(LINK_URL_LABELS));
+
   const OTHER_FIELD_GROUPS = [
+    { id: "links", title: "Links", prefixes: [] },
     { id: "home", title: "Home", prefixes: ["home"] },
     { id: "homeAbout", title: "About", prefixes: ["homeAbout"] },
     { id: "homeServices", title: "Services", prefixes: ["homeServices", "homeTier"] },
@@ -45,6 +61,9 @@
   const PORTAL_RUNTIME_MIN_SUBGROUP_SIZE = 2;
 
   function getOtherFieldGroupId(key) {
+    if (LINK_URL_KEYS.has(key)) {
+      return "links";
+    }
     if (key.startsWith("portalRuntime")) {
       return "portalRuntime";
     }
@@ -254,7 +273,7 @@
           setNodeValueFromBinding(node, binding, value);
         } else {
           const property = binding.property || "textContent";
-          if (property === "placeholder" || property === "content" || property === "value") {
+          if (property === "placeholder" || property === "content" || property === "value" || property === "href") {
             node.setAttribute(property, value);
           }
         }
@@ -694,7 +713,10 @@
       } else {
         keys.forEach(function (key) {
           const built = makeField(key);
-          built.label.textContent = toGroupedDisplayLabel(key, group.prefixes);
+          built.label.textContent = LINK_URL_LABELS[key] || toGroupedDisplayLabel(key, group.prefixes);
+          if (group.id === "links") {
+            built.field.querySelector("input, textarea").type = "url";
+          }
           details.appendChild(built.field);
           searchableFields.push({ field: built.field, key: key, label: built.label.textContent, ancestors: [details] });
         });

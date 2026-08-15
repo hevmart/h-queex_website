@@ -1,5 +1,5 @@
 {
-  "_version": 5,
+  "_version": 6,
   "values": {
     "homeMetaDescription": "H-Queex is a remote-first process improvement and operational engineering consultancy. Delivery is structured, asynchronous, and accountability-led from intake through implementation.",
     "homeTitle": "H-Queex | Operational Clarity Engineered by Design",
@@ -9,6 +9,7 @@
     "homeNavMethodology": "Methodology",
     "homeNavIntake": "Intake",
     "homeNavPortal": "Client Portal",
+    "homePortalUrl": "portal.html",
     "homeNavSubmit": "Submit Intake",
     "homeHeroEyebrow": "Operating Model",
     "homeHeroHeading": "Operational Clarity Engineered by Design",
@@ -155,8 +156,11 @@
     "homeFooterCopyright": "\u00a9 2026 H-Queex. All rights reserved.",
     "homeFooterPortal": "Client Portal",
     "homeFooterLinkedIn": "LinkedIn",
+    "homeFooterLinkedInUrl": "https://linkedin.com/company/h-queex",
     "homeFooterPrivacy": "Privacy Policy",
+    "homeFooterPrivacyUrl": "privacy.html",
     "homeFooterTerms": "Terms",
+    "homeFooterTermsUrl": "terms.html",
     "homeFooterEditContent": "Edit Content",
     "homeFooterBackTop": "Back to top",
     "portalTitle": "H-Queex | Client Portal",
@@ -438,6 +442,13 @@
       "selector": ".site-nav a:nth-of-type(6)",
       "property": "textContent",
       "valueKey": "homeNavPortal",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".site-nav a:nth-of-type(6)",
+      "property": "href",
+      "valueKey": "homePortalUrl",
       "mode": "first"
     },
     {
@@ -1443,9 +1454,23 @@
     },
     {
       "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(1)",
+      "property": "href",
+      "valueKey": "homePortalUrl",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
       "selector": ".footer-links a:nth-of-type(2)",
       "property": "firstTextNode",
       "valueKey": "homeFooterLinkedIn",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(2)",
+      "property": "href",
+      "valueKey": "homeFooterLinkedInUrl",
       "mode": "first"
     },
     {
@@ -1457,9 +1482,23 @@
     },
     {
       "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(3)",
+      "property": "href",
+      "valueKey": "homeFooterPrivacyUrl",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
       "selector": ".footer-links a:nth-of-type(4)",
       "property": "textContent",
       "valueKey": "homeFooterTerms",
+      "mode": "first"
+    },
+    {
+      "page": "index.html",
+      "selector": ".footer-links a:nth-of-type(4)",
+      "property": "href",
+      "valueKey": "homeFooterTermsUrl",
       "mode": "first"
     },
     {
