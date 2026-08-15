@@ -223,48 +223,82 @@
         animation: none !important;
       }
 
+      /*
+        The highlight system never sets `color`. Every section on the live
+        site already sets the correct text color for its own background
+        (light sections: navy/muted text; dark sections: white/near-white
+        text) via styles.css / portal.css, and the replica editor inherits
+        that by reusing the same stylesheets. All this layer adds is an
+        outline + background tint, and the tint itself is picked per
+        surface so it never fights the text color that's already there:
+        opaque warm tan under dark text on light surfaces (needed so
+        forced-dark-mode heuristics that darken a light background can't
+        leave dark navy text stranded on a background that turned dark
+        underneath it), translucent light tint under light text on dark
+        surfaces (a light surface would be the wrong failure mode there -
+        dark surfaces just need to stay dark).
+      */
       .replica-editable {
         outline: 2px dashed rgba(176, 141, 87, 0.65);
         outline-offset: 2px;
         border-radius: 6px;
-        /* Solid, not translucent: some browsers' forced-dark heuristics
-           darken this element's ancestors regardless of forced-color-adjust,
-           and a translucent highlight lets that darkened background show
-           through underneath it. An opaque highlight can't be affected by
-           whatever happens behind it, so contrast with the explicit navy
-           text below is guaranteed no matter what the browser does to the
-           surrounding page. */
-        background: #f3e6cf;
+        /* Lightened from an earlier #f3e6cf: that tan measured 4.44:1
+           against the site's own --muted body-copy color, just under the
+           4.5:1 AA text threshold. This shade clears it (~4.65:1) while
+           staying the same warm tan hue. */
+        background: #f6ebda;
         transition: background-color 140ms ease, outline-color 140ms ease, box-shadow 140ms ease;
         cursor: text;
         box-shadow: inset 0 -1px 0 rgba(176, 141, 87, 0.55);
         forced-color-adjust: none;
       }
 
-      /* Keep white/light text readable in dark surfaces. */
+      /* Dark-surface components: every place styles.css sets a dark
+         (navy/near-black) background for a section or card. Text color is
+         left untouched (inherited from the site's own dark-surface rules)
+         - only the tint changes, and it stays translucent + light so the
+         surface underneath stays dark instead of an opaque light tint
+         accidentally creating a light-on-light or dark-on-light mismatch. */
       .replica-canvas .section-dark .replica-editable,
-      .replica-canvas .site-footer .replica-editable {
-        background: rgba(176, 141, 87, 0.14);
-        color: var(--navy) !important;
+      .replica-canvas .tier-card .replica-editable {
+        background: rgba(255, 255, 255, 0.16);
         outline-color: rgba(230, 196, 136, 0.9);
         box-shadow: inset 0 -1px 0 rgba(230, 196, 136, 0.85);
       }
 
-      .replica-canvas .site-footer,
-      .replica-canvas .site-footer .footer-wrap,
-      .replica-canvas .site-footer .footer-brand,
-      .replica-canvas .site-footer .footer-brand span,
-      .replica-canvas .site-footer .footer-tagline,
-      .replica-canvas .site-footer .footer-links,
-      .replica-canvas .site-footer .footer-links a {
-        color: var(--navy);
+      /* .intake-shell's background is a gradient that runs from dark navy
+         to a bright gold stop, unlike the flat-dark .section-dark/.tier-card
+         surfaces. A lightening tint is unreadable wherever a field lands on
+         the gold end, so this darkens instead - safe at every point along
+         the gradient since it only pulls luminance down. */
+      .replica-canvas .intake-shell .replica-editable {
+        background: rgba(8, 17, 34, 0.4);
+        outline-color: rgba(230, 196, 136, 0.92);
+        box-shadow: inset 0 -1px 0 rgba(230, 196, 136, 0.88);
       }
 
-      .replica-canvas .site-footer .footer-links a:hover {
-        color: var(--gold);
+      .replica-canvas .section-dark .replica-editable[data-empty="1"]::before,
+      .replica-canvas .tier-card .replica-editable[data-empty="1"]::before,
+      .replica-canvas .intake-shell .replica-editable[data-empty="1"]::before {
+        color: rgba(255, 255, 255, 0.72);
       }
 
-      /* Editable text inside button-style links needs stronger contrast. */
+      /* Footer is a light surface (no dark background in styles.css) but
+         sits at the very bottom of the page where forced-dark heuristics
+         are most aggressive about repainting; opt it out explicitly so its
+         real navy/muted text (already correct) never gets stranded on a
+         darkened background. No color override - the site's own footer
+         rules already set the right colors. */
+      .replica-canvas .site-footer {
+        forced-color-adjust: none;
+      }
+
+      /* Editable text inside button-style links: the button itself already
+         paints an opaque dark gradient with white text (see the
+         .solid-btn/.ghost-btn rule below and .btn-primary in styles.css),
+         so the highlight only needs to darken slightly further for the
+         dashed outline to read against it - it must not lighten the
+         button or the inherited white button text loses contrast. */
       .replica-canvas a.btn.replica-editable,
       .replica-canvas .btn .replica-editable,
       .replica-canvas .hero-cta .replica-editable {
@@ -279,8 +313,12 @@
       }
 
       .replica-canvas .section-dark .replica-editable:hover,
-      .replica-canvas .site-footer .replica-editable:hover {
-        background: rgba(176, 141, 87, 0.2);
+      .replica-canvas .tier-card .replica-editable:hover {
+        background: rgba(255, 255, 255, 0.24);
+      }
+
+      .replica-canvas .intake-shell .replica-editable:hover {
+        background: rgba(8, 17, 34, 0.5);
       }
 
       .replica-canvas a.btn.replica-editable:hover,
@@ -290,9 +328,15 @@
       }
 
       .replica-editable:focus {
-        background: rgba(22, 41, 74, 0.08);
         outline: 2px solid rgba(22, 41, 74, 0.7);
         box-shadow: 0 0 0 3px rgba(22, 41, 74, 0.18);
+      }
+
+      .replica-canvas .section-dark .replica-editable:focus,
+      .replica-canvas .tier-card .replica-editable:focus,
+      .replica-canvas .intake-shell .replica-editable:focus {
+        outline-color: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22);
       }
 
       .replica-canvas .solid-btn.replica-editable,
