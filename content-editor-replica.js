@@ -33,7 +33,8 @@
     homePortalUrl: "Client Portal URL",
     homeFooterPrivacyUrl: "Privacy Policy URL",
     homeFooterTermsUrl: "Terms URL",
-    homeFooterLinkedInUrl: "LinkedIn URL"
+    homeFooterLinkedInUrl: "LinkedIn URL",
+    portalHeaderWebsiteUrl: "Portal Website URL"
   };
   const LINK_URL_KEYS = new Set(Object.keys(LINK_URL_LABELS));
 

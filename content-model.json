@@ -1,5 +1,5 @@
 {
-  "_version": 6,
+  "_version": 7,
   "values": {
     "homeMetaDescription": "H-Queex is a remote-first process improvement and operational engineering consultancy. Delivery is structured, asynchronous, and accountability-led from intake through implementation.",
     "homeTitle": "H-Queex | Operational Clarity Engineered by Design",
@@ -165,6 +165,7 @@
     "homeFooterBackTop": "Back to top",
     "portalTitle": "H-Queex | Client Portal",
     "portalHeaderWebsite": "Website",
+    "portalHeaderWebsiteUrl": "index.html",
     "portalHeaderSignOut": "Sign Out",
     "portalLoginEyebrow": "Client Portal Access",
     "portalLoginHeading": "Secure project workspace",
@@ -1524,9 +1525,23 @@
     },
     {
       "page": "portal.html",
+      "selector": ".portal-brand",
+      "property": "href",
+      "valueKey": "portalHeaderWebsiteUrl",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
       "selector": ".portal-header-actions a",
       "property": "textContent",
       "valueKey": "portalHeaderWebsite",
+      "mode": "first"
+    },
+    {
+      "page": "portal.html",
+      "selector": ".portal-header-actions a",
+      "property": "href",
+      "valueKey": "portalHeaderWebsiteUrl",
       "mode": "first"
     },
     {
