@@ -23,21 +23,26 @@
   // or portal runtime strings used directly in JS rather than swapped into
   // static HTML). Ported from content-editor.js so labels stay familiar.
   const OTHER_FIELD_GROUPS = [
-    { id: "home", title: "Home" },
-    { id: "homeAbout", title: "About" },
-    { id: "homeServices", title: "Services" },
-    { id: "homeMethod", title: "Methodology" },
-    { id: "homeWorkflow", title: "Workflow" },
-    { id: "homeFit", title: "Qualification / Fit" },
-    { id: "homeProof", title: "Proof and Maturity" },
-    { id: "homeIntake", title: "Intake" },
-    { id: "homeSecondary", title: "Secondary Conversion" },
-    { id: "homeFooter", title: "Footer" },
-    { id: "portal", title: "Portal" },
-    { id: "portalRuntime", title: "Portal Runtime" },
-    { id: "legal", title: "Legal Pages" },
-    { id: "other", title: "Other" }
+    { id: "home", title: "Home", prefixes: ["home"] },
+    { id: "homeAbout", title: "About", prefixes: ["homeAbout"] },
+    { id: "homeServices", title: "Services", prefixes: ["homeServices", "homeTier"] },
+    { id: "homeMethod", title: "Methodology", prefixes: ["homeMethod", "homeStep"] },
+    { id: "homeWorkflow", title: "Workflow", prefixes: ["homeWorkflow"] },
+    { id: "homeFit", title: "Qualification / Fit", prefixes: ["homeFit"] },
+    { id: "homeProof", title: "Proof and Maturity", prefixes: ["homeProof", "homeRoadmap", "homeFutureProof"] },
+    { id: "homeIntake", title: "Intake", prefixes: ["homeIntake"] },
+    { id: "homeSecondary", title: "Secondary Conversion", prefixes: ["homeSecondary", "homeUpdate"] },
+    { id: "homeFooter", title: "Footer", prefixes: ["homeFooter"] },
+    { id: "portal", title: "Portal", prefixes: ["portal"] },
+    { id: "portalRuntime", title: "Portal Runtime", prefixes: ["portalRuntime"] },
+    { id: "legal", title: "Legal Pages", prefixes: ["privacy", "terms"] },
+    { id: "other", title: "Other", prefixes: [] }
   ];
+
+  // Fields below the "portalRuntime" prefix minority (count < 2) are folded
+  // into a shared "Other" subgroup instead of getting their own single-item
+  // <details> - not worth a whole disclosure widget for one field.
+  const PORTAL_RUNTIME_MIN_SUBGROUP_SIZE = 2;
 
   function getOtherFieldGroupId(key) {
     if (key.startsWith("portalRuntime")) {
@@ -89,6 +94,44 @@
         return char.toUpperCase();
       })
       .trim();
+  }
+
+  // Strips the group's key prefix before formatting a label, since the
+  // enclosing <details>/<summary> already names the group - repeating it in
+  // every one of a group's field labels (e.g. "Portal Runtime Activity Logo
+  // Cleared" x82) just adds noise to scan past. Falls back to the full
+  // label if nothing remains after stripping (shouldn't normally happen).
+  function toGroupedDisplayLabel(key, prefixes) {
+    let longestMatch = "";
+    (prefixes || []).forEach(function (prefix) {
+      if (key.startsWith(prefix) && prefix.length > longestMatch.length) {
+        longestMatch = prefix;
+      }
+    });
+    const remainder = longestMatch ? key.slice(longestMatch.length) : key;
+    const label = toDisplayLabel(remainder || key);
+    return label || toDisplayLabel(key);
+  }
+
+  // Splits a PascalCase remainder (e.g. "ActivityLogoCleared") into its
+  // capitalized word chunks (["Activity", "Logo", "Cleared"]).
+  function splitPascalWords(str) {
+    return str.match(/[A-Z][a-z0-9]*|[0-9]+/g) || [];
+  }
+
+  // Portal Runtime alone is 65% of the "Other Content Fields" panel. Its
+  // keys already follow other-field-portalRuntime<SubGroup><Rest>, so the
+  // second camelCase word is a free, natural sub-grouping - this splits it
+  // out instead of leaving 82 fields in one flat list.
+  function getPortalRuntimeSubgroup(key) {
+    const remainder = key.slice("portalRuntime".length);
+    const words = splitPascalWords(remainder);
+    if (!words.length) {
+      return { subKey: "other", label: toDisplayLabel(remainder) };
+    }
+    const subKey = words[0];
+    const labelWords = words.length > 1 ? words.slice(1) : words;
+    return { subKey: subKey, label: labelWords.join(" ") };
   }
 
   const SECTION_PRESETS = [
@@ -524,6 +567,20 @@
       "Not shown as page text above - meta tags, input placeholders, and portal runtime messages. Still part of the site's content and included in Save/Publish.";
     container.appendChild(hint);
 
+    const searchWrap = document.createElement("div");
+    searchWrap.className = "replica-other-search-wrap";
+    const searchInput = document.createElement("input");
+    searchInput.type = "search";
+    searchInput.id = "replica-other-search";
+    searchInput.placeholder = "Search other content fields by label or key...";
+    searchInput.setAttribute("aria-label", "Search other content fields");
+    searchWrap.appendChild(searchInput);
+    container.appendChild(searchWrap);
+
+    const fieldsHost = document.createElement("div");
+    fieldsHost.className = "replica-other-fields-host";
+    container.appendChild(fieldsHost);
+
     const byGroup = new Map();
     orphanKeys.forEach(function (key) {
       const groupId = getOtherFieldGroupId(key);
@@ -533,6 +590,45 @@
       byGroup.get(groupId).push(key);
     });
 
+    // Every searchable field's <div class="replica-other-field"> plus the
+    // chain of <details> it lives inside, so the search box can toggle
+    // visibility and auto-expand ancestors on a match.
+    const searchableFields = [];
+
+    function makeField(key) {
+      const field = document.createElement("div");
+      field.className = "replica-other-field";
+
+      const label = document.createElement("label");
+      label.setAttribute("for", "other-field-" + key);
+      field.appendChild(label);
+
+      const rawValue = String(values[key] || "");
+      const useTextarea =
+        rawValue.length > 90 || /Body|Description|Intro|Message|Note|Summary|Paragraph|Copy|Disclaimer/i.test(key);
+      const input = document.createElement(useTextarea ? "textarea" : "input");
+      input.id = "other-field-" + key;
+      input.value = state.values[key] || "";
+      if (useTextarea) {
+        input.rows = 3;
+      } else {
+        input.type = "text";
+      }
+
+      input.addEventListener("input", function () {
+        state.values[key] = input.value;
+        state.dirtyKeys.add(key);
+        markDirty();
+      });
+
+      field.appendChild(input);
+
+      state.otherFieldElements.set(key, input);
+      state.pageKeys.add(key);
+
+      return { field: field, label: label, key: key };
+    }
+
     OTHER_FIELD_GROUPS.forEach(function (group) {
       const keys = byGroup.get(group.id);
       if (!keys || !keys.length) {
@@ -540,47 +636,100 @@
       }
       keys.sort();
 
-      const fieldset = document.createElement("fieldset");
-      fieldset.className = "replica-other-group";
-      const legend = document.createElement("legend");
-      legend.textContent = group.title;
-      fieldset.appendChild(legend);
+      const details = document.createElement("details");
+      details.className = "replica-other-group";
+      const summary = document.createElement("summary");
+      summary.textContent = group.title + " (" + keys.length + ")";
+      details.appendChild(summary);
 
-      keys.forEach(function (key) {
-        const field = document.createElement("div");
-        field.className = "replica-other-field";
-
-        const label = document.createElement("label");
-        label.textContent = toDisplayLabel(key);
-        label.setAttribute("for", "other-field-" + key);
-        field.appendChild(label);
-
-        const rawValue = String(values[key] || "");
-        const useTextarea =
-          rawValue.length > 90 || /Body|Description|Intro|Message|Note|Summary|Paragraph|Copy|Disclaimer/i.test(key);
-        const input = document.createElement(useTextarea ? "textarea" : "input");
-        input.id = "other-field-" + key;
-        input.value = state.values[key] || "";
-        if (useTextarea) {
-          input.rows = 3;
-        } else {
-          input.type = "text";
-        }
-
-        input.addEventListener("input", function () {
-          state.values[key] = input.value;
-          state.dirtyKeys.add(key);
-          markDirty();
+      if (group.id === "portalRuntime") {
+        const bySub = new Map();
+        keys.forEach(function (key) {
+          const sub = getPortalRuntimeSubgroup(key);
+          if (!bySub.has(sub.subKey)) {
+            bySub.set(sub.subKey, []);
+          }
+          bySub.get(sub.subKey).push({ key: key, label: sub.label });
         });
 
-        field.appendChild(input);
-        fieldset.appendChild(field);
+        // Fold subgroups too small to be worth their own disclosure widget
+        // into a shared "Other" bucket.
+        const otherBucket = bySub.get("other") || [];
+        bySub.delete("other");
+        const finalSubs = [];
+        bySub.forEach(function (items, subKey) {
+          if (items.length < PORTAL_RUNTIME_MIN_SUBGROUP_SIZE) {
+            otherBucket.push.apply(otherBucket, items);
+          } else {
+            finalSubs.push({ subKey: subKey, items: items });
+          }
+        });
+        finalSubs.sort(function (a, b) {
+          return a.subKey.localeCompare(b.subKey);
+        });
+        if (otherBucket.length) {
+          finalSubs.push({ subKey: "Other", items: otherBucket });
+        }
 
-        state.otherFieldElements.set(key, input);
-        state.pageKeys.add(key);
+        finalSubs.forEach(function (sub) {
+          sub.items.sort(function (a, b) {
+            return a.key.localeCompare(b.key);
+          });
+
+          const subDetails = document.createElement("details");
+          subDetails.className = "replica-other-subgroup";
+          const subSummary = document.createElement("summary");
+          subSummary.textContent = sub.subKey + " (" + sub.items.length + ")";
+          subDetails.appendChild(subSummary);
+
+          sub.items.forEach(function (item) {
+            const built = makeField(item.key);
+            built.label.textContent = item.label;
+            subDetails.appendChild(built.field);
+            searchableFields.push({ field: built.field, key: item.key, label: item.label, ancestors: [subDetails, details] });
+          });
+
+          details.appendChild(subDetails);
+        });
+      } else {
+        keys.forEach(function (key) {
+          const built = makeField(key);
+          built.label.textContent = toGroupedDisplayLabel(key, group.prefixes);
+          details.appendChild(built.field);
+          searchableFields.push({ field: built.field, key: key, label: built.label.textContent, ancestors: [details] });
+        });
+      }
+
+      fieldsHost.appendChild(details);
+    });
+
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.trim().toLowerCase();
+
+      if (!query) {
+        searchableFields.forEach(function (entry) {
+          entry.field.hidden = false;
+        });
+        fieldsHost.querySelectorAll("details").forEach(function (d) {
+          d.open = false;
+        });
+        return;
+      }
+
+      const openDetails = new Set();
+      searchableFields.forEach(function (entry) {
+        const matches = entry.label.toLowerCase().includes(query) || entry.key.toLowerCase().includes(query);
+        entry.field.hidden = !matches;
+        if (matches) {
+          entry.ancestors.forEach(function (d) {
+            openDetails.add(d);
+          });
+        }
       });
 
-      container.appendChild(fieldset);
+      fieldsHost.querySelectorAll("details").forEach(function (d) {
+        d.open = openDetails.has(d);
+      });
     });
   }
 

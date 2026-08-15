@@ -111,18 +111,94 @@
         max-width: 60ch;
       }
 
-      .replica-other-group {
-        border: 1px solid rgba(17, 33, 63, 0.16);
-        border-radius: 14px;
-        padding: 0.9rem 1.1rem 1.1rem;
+      .replica-other-search-wrap {
+        position: sticky;
+        top: calc(var(--replica-toolbar-height) - 4px);
+        z-index: 5;
+        background: rgba(247, 249, 253, 0.96);
+        backdrop-filter: blur(6px);
+        padding: 0.6rem 0;
         margin-bottom: 1rem;
       }
 
-      .replica-other-group legend {
-        padding: 0 0.4rem;
+      #replica-other-search {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid rgba(17, 33, 63, 0.22);
+        border-radius: 10px;
+        padding: 0.6rem 0.8rem;
+        font: inherit;
+        font-size: 0.92rem;
+      }
+
+      .replica-other-fields-host {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      .replica-other-group {
+        border: 1px solid rgba(17, 33, 63, 0.16);
+        border-radius: 14px;
+        padding: 0.75rem 1.1rem 1rem;
+      }
+
+      .replica-other-group > summary {
+        cursor: pointer;
         font-weight: 700;
         color: var(--replica-ink);
-        font-size: 0.9rem;
+        font-size: 0.94rem;
+        padding: 0.15rem 0;
+        list-style: none;
+      }
+
+      .replica-other-group > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .replica-other-group > summary::before {
+        content: "▸";
+        display: inline-block;
+        margin-right: 0.5rem;
+        color: var(--replica-accent);
+        transition: transform 120ms ease;
+      }
+
+      .replica-other-group[open] > summary::before {
+        transform: rotate(90deg);
+      }
+
+      .replica-other-subgroup {
+        border: 1px solid rgba(17, 33, 63, 0.12);
+        border-radius: 10px;
+        padding: 0.55rem 0.8rem 0.7rem;
+        margin-top: 0.7rem;
+        background: rgba(17, 33, 63, 0.02);
+      }
+
+      .replica-other-subgroup > summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #6a5733;
+        font-size: 0.84rem;
+        padding: 0.1rem 0;
+        list-style: none;
+      }
+
+      .replica-other-subgroup > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .replica-other-subgroup > summary::before {
+        content: "▸";
+        display: inline-block;
+        margin-right: 0.45rem;
+        color: var(--replica-accent);
+        transition: transform 120ms ease;
+      }
+
+      .replica-other-subgroup[open] > summary::before {
+        transform: rotate(90deg);
       }
 
       .replica-other-field {
